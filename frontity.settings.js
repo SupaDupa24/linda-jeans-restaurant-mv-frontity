@@ -9,27 +9,14 @@ const settings = {
   },
   "packages": [
     {
-      "name": "ljmv-theme",
-      "state": {
-        "theme": {
-          "menu": [
-            [
-              "Sample Page",
-              "/sample-page"
-            ]
-          ],
-          "featured": {
-            "showOnList": false,
-            "showOnPost": false
-          }
-        }
-      }
+      "name": "ljmv-theme"
     },
     {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "api": "http://lindajeansrestaurantmv.test/wp-json/"
+          api: "http://lindajeansrestaurantmv.test/wp-json/",
+          homepage: "/home"
         }
       }
     },
