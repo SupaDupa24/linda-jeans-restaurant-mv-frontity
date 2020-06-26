@@ -1,22 +1,20 @@
 import React from 'react'
-import {connect, Global, css, styled} from 'frontity'
+import {connect, Global, css} from 'frontity'
 import Switch from '@frontity/components/switch'
 
-import Link from './link'
+import Header from './global/header'
 
 import Loading from './loading'
 import Home from './home'
-import Menus from './menus'
-import AboutUs from './about'
-import ContactUs from './contact'
+import Post from './post'
+import PageError from './page-error'
+
+import Trebuchet from '../fonts/trebuc.ttf'
+// import TrebuchetItalic from '../fonts/Trebuchet-MS-Italic.ttf'
 
 const Root = ({state}) => {
   const data = state.source.get(state.router.link)
-  let post = null
 
-  if(typeof data.type !== 'undefined' && !!!data.isHome) {
-    post = state.source[data.type][data.id]
-  }
 
   return (
     <>
@@ -28,30 +26,34 @@ const Root = ({state}) => {
             box-sizing: border-box;
           }
 
+          @font-face {
+            font-family: Trebuchet;
+            src: url(${Trebuchet});
+          }
+
           html {
-            font-family: sans-serif;
+            font-family: Trebuchet, sans-serif;
+          }
+
+          button, a {
+            border: 0;
+            outline: 0;
+
+            &::-moz-focus-inner {
+              border: 0;
+            }
           }
         `}
       />
 
-      <header>
-        <h1>Linda Jean's MV Restaurant</h1>
-
-        <nav>
-          <Link href="/">Home</Link>
-          <Link href="/menus/">Menus</Link>
-          <Link href="/about-us/">About Us</Link>
-          <Link href="/contact-us/">Contact Us</Link>
-        </nav>
-      </header>
+      <Header theme={theme} />
 
       <main>
         <Switch>
-          <Loading when={data.isFetching} />
-          <Home when={data.isHome} />
-          <Menus when={post !== null && post.template == 'menus.php'} />
-          <AboutUs when={post !== null && post.template == 'about.php'} />
-          <ContactUs when={post !== null && post.template == 'contact.php'} />
+          <Loading when={data.isFetching} theme={theme} />
+          <Home when={data.isHome} theme={theme} />
+          <Post when={data.isPostType} theme={theme} />
+          <PageError when={data.isError} theme={theme} />
         </Switch>
       </main>
     </>
