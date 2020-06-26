@@ -15,6 +15,14 @@ import Trebuchet from '../fonts/trebuc.ttf'
 const Root = ({state}) => {
   const data = state.source.get(state.router.link)
 
+  const theme = {
+    colors: {
+      light: '#FFFFFF',
+      dark: '#000000',
+      primary: 'maroon',
+      secondary: 'lightgray'
+    }
+  }
 
   return (
     <>
