@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'frontity'
 
-import Link from '../link'
+import Link from '../partials/link'
 
 const About = ({hero, options}) => {
   return (
@@ -12,11 +12,15 @@ const About = ({hero, options}) => {
       {hero.buttons.map((button, index) => {
         const onlineOrdering = button.online_ordering_button
 
-        return(
-          <>
-            {onlineOrdering ? <a key={index.toString()} className={button.style} href={options.acf.online_ordering_link}>{button.title}</a> : <Link key={index.toString()} href={button.link.url} className={button.style}>{button.link.title}</Link>}
-          </>
-        )
+        if(onlineOrdering) {
+          return(
+            <a key={index.toString()} className={button.style} href={options.acf.online_ordering_link}>{button.title}</a>
+          )
+        } else {
+          return (
+            <Link key={index.toString()} href={button.link.url} className={button.style}>{button.link.title}</Link>
+          )
+        }
       })}
     </div>
   )

@@ -4,19 +4,14 @@ import {connect, styled} from 'frontity'
 const Link = ({href, actions, children}) => {
   return(
     <div>
-      <Anchor href={href} onClick={e => {
+      <a href={href} onClick={e => {
         e.preventDefault()
         actions.router.set(href)
       }}>
         {children}
-      </Anchor>
+      </a>
     </div>
   )
 }
 
 export default connect(Link)
-
-const Anchor = styled.a`
-  color: maroon;
-  text-decoration: none;
-`

@@ -17,10 +17,10 @@ const Home = ({state}) => {
       <Hero hero={post.acf.hero} options={options} />
 
       {post.acf.content.map((section, index) => 
-        <Switch>
-          <Awards key={index} section={section} when={section.acf_fc_layout == 'awards_section'} />
-          <About key={index} section={section} when={section.acf_fc_layout == 'about_section'} />
-          <Menus key={index} section={section} when={section.acf_fc_layout == 'menus_section'} />
+        <Switch key={index}>
+          <Awards section={section} when={section.acf_fc_layout == 'awards_section'} />
+          <About section={section} when={section.acf_fc_layout == 'about_section'} />
+          <Menus section={section} when={section.acf_fc_layout == 'menus_section'} />
         </Switch>
       )}
     </div>

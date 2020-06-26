@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from '@frontity/components/image'
 
-import Link from '../link'
+import Link from '../partials/link'
 
 const Menus = ({section}) => {
   // console.log(section)
