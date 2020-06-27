@@ -51,6 +51,17 @@ const Root = ({state}) => {
               border: 0;
             }
           }
+
+          hr {
+
+
+            &:before {
+              content: "";
+              ${'' /* display: block; */}
+              border-bottom: 3px solid ${theme.colors.dark};
+              width: 100%;
+            }
+          }
         `}
       />
 
