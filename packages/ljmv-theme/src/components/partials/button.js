@@ -21,12 +21,18 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
           {children}
         </FilledButton>
       )
-    }
+    case 'primary':
+      return(
+        <PrimaryButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
+          {children}
+        </PrimaryButton>
+      )
+  }
 }
 
 export default connect(Button)
 
-const OutlineButton = styled.a`
+const basicButtonStyles = css`
   display: inline-block;
   margin: 0.5rem;
   padding: 0.75rem 1.5rem;
@@ -34,19 +40,24 @@ const OutlineButton = styled.a`
 
   font-weight: bold;
   text-decoration: none;
+`
+
+const OutlineButton = styled.a`
+  ${basicButtonStyles}  
 
   outline: ${props => props.theme.colors.light} 2px solid;
   color: ${props => props.theme.colors.light};
 `
 const FilledButton = styled.a`
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  text-transform: uppercase;
-
-  font-weight: bold;
-  text-decoration: none;
+  ${basicButtonStyles}
 
   background: ${props => props.theme.colors.light};
   color: ${props => props.theme.colors.primary};
+`
+
+const PrimaryButton = styled.a`
+  ${basicButtonStyles}
+
+  background: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.colors.light};
 `
