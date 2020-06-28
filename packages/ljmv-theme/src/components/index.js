@@ -1,8 +1,9 @@
 import React from 'react'
-import {connect, Global, css} from 'frontity'
+import {connect, Global, css, styled} from 'frontity'
 import Switch from '@frontity/components/switch'
 
 import Header from './global/header'
+import Footer from './global/footer'
 
 import Loading from './loading'
 import Home from './home'
@@ -38,11 +39,16 @@ const Root = ({state}) => {
             src: url(${Trebuchet});
           }
 
-          body {
+          #root {
             font-family: Trebuchet, sans-serif;
             color: ${theme.colors.primary};
             background: ${theme.colors.light};
             line-height: 1.5;
+            letter-spacing: 1px;
+
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
           }
 
           h2 {
@@ -70,6 +76,10 @@ const Root = ({state}) => {
             &::-moz-focus-inner {
               border: 0;
             }
+          }
+
+          button {
+            font-family: Trebuchet, sans-serif;
           }
 
           a {
@@ -104,16 +114,22 @@ const Root = ({state}) => {
 
       <Header theme={theme} />
 
-      <main>
+      <SiteContent>
         <Switch>
           <Loading when={data.isFetching} theme={theme} />
           <Home when={data.isHome} theme={theme} />
           <Post when={data.isPostType} theme={theme} />
           <PageError when={data.isError} theme={theme} />
         </Switch>
-      </main>
+      </SiteContent>
+
+      <Footer theme={theme} />
     </>
   )
 }
 
 export default connect(Root)
+
+const SiteContent = styled.main`
+  flex: 1;
+`
