@@ -36,7 +36,7 @@ const Home = ({state, theme}) => {
         <Switch key={index}>
           <Awards section={section} when={section.acf_fc_layout == 'awards_section'} />
           <About section={section} options={options} when={section.acf_fc_layout == 'about_section'} />
-          <Menus section={section} when={section.acf_fc_layout == 'menus_section'} />
+          <Menus section={section} theme={theme} when={section.acf_fc_layout == 'menus_section'} />
         </Switch>
       )}
     </div>
