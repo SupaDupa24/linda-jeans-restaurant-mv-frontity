@@ -1,6 +1,7 @@
 import React from 'react'
-import Image from '@frontity/components/image'
 import {styled} from 'frontity'
+
+import BackgroundImage from '../partials/background-image'
 
 import Link from '../partials/link'
 
@@ -71,13 +72,4 @@ const ContactInformation = styled.div`
   address {
     font-style: normal;
   }
-`
-
-const BackgroundImage = styled.div`
-  padding-bottom: 40%;
-  background-image: url(${props => props.bgImg});
-  background-size: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 `
