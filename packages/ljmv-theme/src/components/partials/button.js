@@ -35,7 +35,7 @@ export default connect(Button)
 const basicButtonStyles = css`
   display: inline-block;
   margin: 0.5rem;
-  padding: 0.75rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   text-transform: uppercase;
 
   font-weight: bold;
