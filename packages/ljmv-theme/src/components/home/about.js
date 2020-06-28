@@ -6,7 +6,6 @@ import BackgroundImage from '../partials/background-image'
 import Link from '../partials/link'
 
 const About = ({section, options}) => {
-  console.log(options.acf)
   return (
     <AboutSection>
       <Row>
