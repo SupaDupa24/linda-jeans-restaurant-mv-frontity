@@ -9,7 +9,7 @@ const Awards = ({section}) => {
       <AwardsContainer>
         {section.awards.map(({logo, link}, index) => {
           return(
-            <Award key={index.toString()} href={link.url} target="_blank" data-tip={link.title}>
+            <Award key={index.toString()} href={link.url} target="_blank" data-tip={link.title} html={false}>
               <Image src={logo.url} alt={link.title}/>
             </Award>
           )
