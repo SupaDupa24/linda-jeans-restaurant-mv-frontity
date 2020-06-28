@@ -73,7 +73,7 @@ const Root = ({state}) => {
           }
 
           a {
-            color: ${theme.colors.primary};
+            color: ${theme.colors.secondary};
             text-decoration: none;
 
             &::visited {
