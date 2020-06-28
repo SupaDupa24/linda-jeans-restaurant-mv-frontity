@@ -14,7 +14,7 @@ const Post = ({state, theme}) => {
     <Switch>
       <Menus when={post.template == 'menus.php'} />
       <AboutUs when={post.template == 'about.php'} theme={theme} />
-      <ContactUs when={post.template == 'contact.php'} />
+      <ContactUs when={post.template == 'contact.php'} theme={theme} />
     </Switch>
   )
 }
