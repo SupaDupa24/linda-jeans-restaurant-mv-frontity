@@ -20,7 +20,7 @@ const Awards = ({section}) => {
 
       <hr />
 
-      {/* <ReactTooltip html={false} /> */}
+      <ReactTooltip html={false} />
     </AwardsSection>
   )
 }
