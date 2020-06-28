@@ -11,13 +11,13 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
   switch(buttonStyle) {
     case 'outline':
       return(
-        <OutlineButton theme={theme} href={href} target={external ? '_blank' : '_self'} onClick={onClickHandler}>
+        <OutlineButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
           {children}
         </OutlineButton>
       )
     case 'filled':
       return(
-        <FilledButton theme={theme} href={href} target={external ? '_blank' : '_self'} onClick={onClickHandler}>
+        <FilledButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
           {children}
         </FilledButton>
       )
