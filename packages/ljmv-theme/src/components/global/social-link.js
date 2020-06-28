@@ -29,7 +29,7 @@ const NavLink = ({href, children, theme, network}) => {
 
   return(
     <div>
-      <Anchor theme={theme} href={href} icon={`url(${icon})`} target="_blank">
+      <Anchor theme={theme} href={href} icon={`url(${icon})`} target="_blank" rel="noopener noreferrer">
         <span>{children}</span>
       </Anchor>
     </div>
