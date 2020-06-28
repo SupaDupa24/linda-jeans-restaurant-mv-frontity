@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect, styled} from 'frontity'
+import {styled} from 'frontity'
 import Image from '@frontity/components/image'
 import ReactTooltip from 'react-tooltip'
 
@@ -25,7 +25,7 @@ const Awards = ({section}) => {
   )
 }
 
-export default connect(Awards)
+export default Awards
 
 const AwardsSection = styled.div`
   max-width: 960px;

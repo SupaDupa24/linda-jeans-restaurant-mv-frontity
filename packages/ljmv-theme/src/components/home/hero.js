@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect, styled} from 'frontity'
+import {styled} from 'frontity'
 
 import Button from '../partials/button'
 
@@ -26,7 +26,7 @@ const Hero = ({hero, options, backgroundImage, theme}) => {
   )
 }
 
-export default connect(Hero)
+export default Hero
 
 const HeroContainer = styled.div`
   padding: 20% 5rem;
