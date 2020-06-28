@@ -1,15 +1,56 @@
 import React from 'react'
-import {connect} from 'frontity'
+import {connect, styled} from 'frontity'
+import Image from '@frontity/components/image'
 
-const AboutUs = ({state}) => {
+import PageHero from './partials/page-hero'
+import BackgroundImage from './partials/background-image'
+import Button from './partials/button'
+
+const AboutUs = ({state, theme, libraries}) => {
   const data = state.source.get(state.router.link)
   const post = state.source[data.type][data.id]
+  const Html2React = libraries.html2react.Component
+
+  console.log(post.acf)
   
   return (
-    <div>
-      <h1>{post.title.rendered}</h1>
-    </div>
+    <AboutPage>
+      <PageHero hero={{title: post.title.rendered, img: state.source.attachment[post.featured_media].source_url}} theme={theme} />
+
+      <AboutUsSection>
+        <hr />
+
+        <h2>{post.acf.our_story.title}</h2>
+
+        <Html2React html={post.acf.our_story.content} />
+
+        <Image src={post.acf.our_story.signature.url} />
+      </AboutUsSection>
+
+      <BackgroundImage bgImg={post.acf.our_story.image.url} />
+
+      <AboutUsSection>
+        <hr />
+
+        <h2>{post.acf.our_team.title}</h2>
+
+        <Html2React html={post.acf.our_team.content} />
+
+        <Button href={post.acf.our_team.link.url} buttonStyle={'primary'} theme={theme}>{post.acf.our_team.link.title}</Button>
+      </AboutUsSection>
+
+      <BackgroundImage bgImg={post.acf.our_team.image.url} />
+    </AboutPage>
   )
 }
 
 export default connect(AboutUs)
+
+const AboutPage = styled.div`
+  padding-bottom: 1rem;
+`
+
+const AboutUsSection = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+`
