@@ -53,4 +53,28 @@ const AboutPage = styled.div`
 const AboutUsSection = styled.div`
   max-width: 960px;
   margin: 0 auto;
+
+  padding: 3rem 0;
+
+  text-align: center;
+
+  h2 {
+    margin: 2rem 0;
+
+    &:after {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 5rem;
+    display: block;
+    margin: 2rem 0 .5rem auto;
+  }
+
+  a {
+    margin: 2rem 0;
+  }
 `
