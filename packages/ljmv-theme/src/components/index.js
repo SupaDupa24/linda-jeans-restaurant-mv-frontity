@@ -38,10 +38,29 @@ const Root = ({state}) => {
             src: url(${Trebuchet});
           }
 
-          html {
+          body {
             font-family: Trebuchet, sans-serif;
             color: ${theme.colors.primary};
             background: ${theme.colors.light};
+            line-height: 1.5;
+          }
+
+          h2 {
+            display: inline-block;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+
+            &:after {
+              content: "";
+              display: block;
+              width: 50%;
+              margin-top: 0.5rem;
+              border-bottom: ${theme.colors.primary} 1px solid;
+            }
+          }
+
+          h3 {
+            text-transform: uppercase;
           }
 
           button, a {
@@ -50,6 +69,19 @@ const Root = ({state}) => {
 
             &::-moz-focus-inner {
               border: 0;
+            }
+          }
+
+          a {
+            color: ${theme.colors.primary};
+            text-decoration: none;
+
+            &::visited {
+              color: ${theme.colors.primary};
+            }
+
+            &::active, &::hover {
+              color: ${theme.colors.primary};
             }
           }
 

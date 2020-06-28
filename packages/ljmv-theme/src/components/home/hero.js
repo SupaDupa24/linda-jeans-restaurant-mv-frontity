@@ -54,6 +54,21 @@ const HeroContainer = styled.div`
   h1, h2 {
     z-index: 1;
     color: ${props => props.theme.colors.light};
+  }
 
+  h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3.2rem;
+  }
+
+  h2 {
+    display: block;
+    text-transform: none;
+    font-style: italic;
+
+    &:after {
+      display: none;
+    }
   }
 `

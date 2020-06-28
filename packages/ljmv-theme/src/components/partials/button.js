@@ -29,7 +29,8 @@ export default connect(Button)
 const OutlineButton = styled.a`
   display: inline-block;
   margin: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
 
   font-weight: bold;
   text-decoration: none;
@@ -40,7 +41,8 @@ const OutlineButton = styled.a`
 const FilledButton = styled.a`
   display: inline-block;
   margin: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  text-transform: uppercase;
 
   font-weight: bold;
   text-decoration: none;
