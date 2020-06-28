@@ -1,12 +1,19 @@
 import React from 'react'
-import {connect} from 'frontity'
+import {styled} from 'frontity'
+import Loader from 'react-loader-spinner'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
-const Loading = ({state}) => {
+const Loading = ({theme}) => {
   return (
-    <div>
-      <h1>Loading...</h1>
-    </div>
+    <LoadingPage>
+      <Loader type="ThreeDots" color={theme.colors.primary} height={80} width={80} />
+    </LoadingPage>
   )
 }
 
-export default connect(Loading)
+export default Loading
+
+const LoadingPage = styled.div`
+  margin: 5rem auto;
+  text-align: center;
+`

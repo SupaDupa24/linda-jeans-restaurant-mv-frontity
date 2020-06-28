@@ -9,6 +9,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "frontity": "^1.9.0",
+    "react-loader-spinner": "^3.1.14",
     "react-tooltip": "^4.2.7"
   }
 }
