@@ -35,7 +35,7 @@ const Home = ({state, theme}) => {
       {post.acf.content.map((section, index) => 
         <Switch key={index}>
           <Awards section={section} when={section.acf_fc_layout == 'awards_section'} />
-          <About section={section} when={section.acf_fc_layout == 'about_section'} />
+          <About section={section} options={options} when={section.acf_fc_layout == 'about_section'} />
           <Menus section={section} when={section.acf_fc_layout == 'menus_section'} />
         </Switch>
       )}
