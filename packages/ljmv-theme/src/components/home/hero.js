@@ -3,9 +3,9 @@ import {connect, styled} from 'frontity'
 
 import Button from '../partials/button'
 
-const About = ({hero, options, backgroundImage, theme}) => {
+const Hero = ({hero, options, backgroundImage, theme}) => {
   return (
-    <Hero backgroundImage={backgroundImage} theme={theme}>
+    <HeroContainer backgroundImage={backgroundImage} theme={theme}>
       <h1>{hero.title}</h1>
       <h2>{hero.subtitle}</h2>
 
@@ -22,13 +22,13 @@ const About = ({hero, options, backgroundImage, theme}) => {
           )
         }
       })}
-    </Hero>
+    </HeroContainer>
   )
 }
 
-export default connect(About)
+export default connect(Hero)
 
-const Hero = styled.div`
+const HeroContainer = styled.div`
   padding: 20% 5rem;
   background-image: ${props => `url(${props.backgroundImage})`};
   background-repeat: no-repeat;
