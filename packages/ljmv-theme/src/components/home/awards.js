@@ -4,7 +4,6 @@ import Image from '@frontity/components/image'
 import ReactTooltip from 'react-tooltip'
 
 const Awards = ({section}) => {
-  console.log(section.awards)
   return (
     <AwardsSection>
       <AwardsContainer>
@@ -37,11 +36,14 @@ const AwardsSection = styled.div`
     text-align: center;
     font-weight: bold;
     font-size: 1.125rem;
+    margin-bottom: 2rem;
   }
 `
 
 const AwardsContainer = styled.div`
   display: flex;
+  align-items: center;
+  margin: 1rem auto;
 `
 
 const Award = styled.a`
@@ -51,18 +53,20 @@ const Award = styled.a`
 
   padding: 1rem;
 
+  &:hover img {
+    filter: grayscale(0%);
+    opacity: 1.0;
+  }
+
   img {
     display: block;
     max-width: 100%;
+    margin: 0 auto;
+    max-height: 5rem;
 
     filter: grayscale(100%);
     opacity: 0.6;
 
     transition: all 0.5s ease-in-out;
-
-    &:hover {
-      filter: grayscale(0%);
-      opacity: 1.0;
-    }
   }
 `
