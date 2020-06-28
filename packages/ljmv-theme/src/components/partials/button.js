@@ -2,7 +2,6 @@ import React from 'react'
 import {connect, styled, css} from 'frontity'
 
 const Button = ({href, actions, children, external, buttonStyle, theme}) => {
-  console.log(buttonStyle)
   const onClickHandler = e => {
     if(!external) {
       e.preventDefault()
