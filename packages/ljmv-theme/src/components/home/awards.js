@@ -16,7 +16,7 @@ const Awards = ({section}) => {
         })}
       </AwardsContainer>
 
-      <h2>{section.text}</h2>
+      <AwardsTitle>{section.text}</AwardsTitle>
 
       <hr />
 
@@ -30,13 +30,19 @@ export default Awards
 const AwardsSection = styled.div`
   max-width: 960px;
   margin: 3rem auto;
+`
 
-  h2 {
-    font-style: italic;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
+const AwardsTitle = styled.h2`
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  display: block;
+  text-transform: none;
+
+  &:after {
+    display: none;
   }
 `
 
