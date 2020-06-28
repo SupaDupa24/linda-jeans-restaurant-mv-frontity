@@ -17,10 +17,9 @@ const Root = ({state}) => {
 
   const theme = {
     colors: {
-      light: '#FFFFFF',
-      dark: '#000000',
-      primary: 'maroon',
-      secondary: 'lightgray'
+      light: '#F8f6e9',
+      primary: '#3c292f',
+      secondary: '#6b5d75'
     }
   }
 
@@ -41,6 +40,8 @@ const Root = ({state}) => {
 
           html {
             font-family: Trebuchet, sans-serif;
+            color: ${theme.colors.primary};
+            background: ${theme.colors.light};
           }
 
           button, a {
@@ -53,12 +54,16 @@ const Root = ({state}) => {
           }
 
           hr {
+            margin: 1rem 0;
+            border: 0;
+            border-top: 2px solid ${theme.colors.primary};
 
-
-            &:before {
+            &:after {
+              max-width: 95%;
+              margin: 2px auto 0;
               content: "";
-              ${'' /* display: block; */}
-              border-bottom: 3px solid ${theme.colors.dark};
+              display: block;
+              border-top: 1px solid ${theme.colors.primary};
               width: 100%;
             }
           }
