@@ -5,9 +5,9 @@ import Link from '../partials/link'
 import NavLink from './nav-link'
 import SocialLink from './social-link'
 
-const Header = ({state, theme}) => {
+const Header = ({state, theme, selectedTheme}) => {
   const options = state.source.get('acf-options-page')
-  const lightLogo = true // TODO REPLACE THIS WITH SELECTOR ON PAGE
+  const lightLogo = selectedTheme === 'light' ? true : false
   const logo = lightLogo ? options.acf.logos.light : options.acf.logos.dark
 
   const {name} = (state.source.get('nameAndDescription'))
@@ -18,13 +18,13 @@ const Header = ({state, theme}) => {
         <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
 
         <nav>
-          <NavLink href="/" theme={theme}>Welcome</NavLink>
-          <NavLink href="/menus/" theme={theme}>Menus</NavLink>
-          <NavLink href="/about-us/" theme={theme}>About Us</NavLink>
-          <NavLink href="/contact-us/" theme={theme}>Contact Us</NavLink>
+          <NavLink href="/" theme={theme} selectedTheme={selectedTheme}>Welcome</NavLink>
+          <NavLink href="/menus/" theme={theme} selectedTheme={selectedTheme}>Menus</NavLink>
+          <NavLink href="/about-us/" theme={theme} selectedTheme={selectedTheme}>About Us</NavLink>
+          <NavLink href="/contact-us/" theme={theme} selectedTheme={selectedTheme}>Contact Us</NavLink>
 
           {Object.keys(options.acf.social_media).map((keyName, keyIndex) => 
-            <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme}>{keyName.replace(/_/g, ' ')}</SocialLink>
+            <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme} selectedTheme={selectedTheme}>{keyName.replace(/_/g, ' ')}</SocialLink>
           )}
         </nav>
       </div>
@@ -35,7 +35,11 @@ const Header = ({state, theme}) => {
 export default connect(Header)
 
 const StyledHeader = styled.header`
-  background: ${props => props.theme.colors.primary};
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 
   > div {
     max-width: 960px;

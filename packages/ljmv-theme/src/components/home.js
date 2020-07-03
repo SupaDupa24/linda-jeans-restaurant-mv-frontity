@@ -2,6 +2,10 @@ import React from 'react'
 import {connect} from 'frontity'
 import Switch from '@frontity/components/switch'
 
+import SiteContent from './global/site-content'
+
+import Header from './global/header'
+
 import Hero from './home/hero'
 import Awards from './home/awards'
 import About from './home/about'
@@ -29,17 +33,21 @@ const Home = ({state, theme}) => {
   // console.log(srcset)
   
   return (
-    <div>
-      <Hero hero={post.acf.hero} options={options} backgroundImage={media.source_url} theme={theme} />
+    <>
+      <Header theme={theme} selectedTheme={post.acf.navigation_bar_theme} />
+      
+      <SiteContent>
+        <Hero hero={post.acf.hero} options={options} backgroundImage={media.source_url} theme={theme} />
 
-      {post.acf.content.map((section, index) => 
-        <Switch key={index}>
-          <Awards section={section} when={section.acf_fc_layout == 'awards_section'} />
-          <About section={section} options={options} when={section.acf_fc_layout == 'about_section'} />
-          <Menus section={section} theme={theme} when={section.acf_fc_layout == 'menus_section'} />
-        </Switch>
-      )}
-    </div>
+        {post.acf.content.map((section, index) => 
+          <Switch key={index}>
+            <Awards section={section} when={section.acf_fc_layout == 'awards_section'} />
+            <About section={section} options={options} when={section.acf_fc_layout == 'about_section'} />
+            <Menus section={section} theme={theme} when={section.acf_fc_layout == 'menus_section'} />
+          </Switch>
+        )}
+      </SiteContent>
+    </>
   )
 }
 

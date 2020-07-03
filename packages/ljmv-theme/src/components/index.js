@@ -2,7 +2,6 @@ import React from 'react'
 import {connect, Global, css, styled} from 'frontity'
 import Switch from '@frontity/components/switch'
 
-import Header from './global/header'
 import Footer from './global/footer'
 
 import Loading from './loading'
@@ -11,7 +10,7 @@ import Post from './post'
 import PageError from './page-error'
 
 import Trebuchet from '../fonts/trebuc.ttf'
-// import TrebuchetItalic from '../fonts/Trebuchet-MS-Italic.ttf'
+// import TrebuchetItalic from '../fonts/Trebuchet-MS-Italic.ttf'  TODO Is this necessary?
 
 const Root = ({state}) => {
   const data = state.source.get(state.router.link)
@@ -21,7 +20,74 @@ const Root = ({state}) => {
       light: '#F8f6e9',
       primary: '#3c292f',
       secondary: '#6b5d75'
-    }
+    },
+    buttonBase: css`
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1.25rem 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    
+      font-weight: bold;
+      text-decoration: none;
+
+      transition: all 0.125s ease-in-out;
+      cursor: pointer;
+    `,
+    lightOutlineButton: css`
+      border: #F8f6e9 2px solid;
+      color: #F8f6e9;
+      background: transparent;
+
+      &:hover,
+      &:focus {
+        background: #F8f6e9;
+        color: #3c292f;
+      }
+    `,
+    lightButton: css`
+      background: #F8f6e9;
+      color: #3c292f;
+
+      &:hover,
+      &:focus {
+        background: #3c292f;
+        color: #F8f6e9;
+      }
+    `,
+    primaryButton: css`
+      border: #3c292f 2px solid;
+      background: #3c292f;
+      color: #F8f6e9;
+
+      &:hover,
+      &:focus {
+        background: #F8f6e9;
+        color: #3c292f;
+      }
+    `,
+    secondaryButton: css`
+      border: #6b5d75 2px solid;
+      background: #6b5d75;
+      color: #F8f6e9;
+
+      &:hover,
+      &:focus {
+        background: #3c292f;
+        border-color: #3c292f;
+      }
+    `,
+    primaryOutlineButton: css`
+      outline: #3c292f 2px solid;
+      color: #3c292f;
+      background: transparent;
+
+      &:hover,
+      &:focus {
+        background: #3c292f;
+        color: #F8f6e9;
+      }
+    `
   }
 
   return (
@@ -112,16 +178,12 @@ const Root = ({state}) => {
         `}
       />
 
-      <Header theme={theme} />
-
-      <SiteContent>
-        <Switch>
-          <Loading when={data.isFetching} theme={theme} />
-          <Home when={data.isHome} theme={theme} />
-          <Post when={data.isPostType} theme={theme} />
-          <PageError when={data.isError} theme={theme} />
-        </Switch>
-      </SiteContent>
+      <Switch>
+        <Loading when={data.isFetching} theme={theme} />
+        <Home when={data.isHome} theme={theme} />
+        <Post when={data.isPostType} theme={theme} />
+        <PageError when={data.isError} theme={theme} />
+      </Switch>
 
       <Footer theme={theme} />
     </>
@@ -129,7 +191,3 @@ const Root = ({state}) => {
 }
 
 export default connect(Root)
-
-const SiteContent = styled.main`
-  flex: 1;
-`

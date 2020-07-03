@@ -1,10 +1,10 @@
 import React from 'react'
 import {connect, styled} from 'frontity'
 
-const NavLink = ({href, actions, children, theme}) => {
+const NavLink = ({href, actions, children, theme, selectedTheme}) => {
   return(
     <div>
-      <Anchor theme={theme} href={href} onClick={e => {
+      <Anchor theme={theme} selectedTheme={selectedTheme} href={href} onClick={e => {
         e.preventDefault()
         actions.router.set(href)
       }}>
@@ -17,7 +17,9 @@ const NavLink = ({href, actions, children, theme}) => {
 export default connect(NavLink)
 
 const Anchor = styled.a`
-  color: ${props => props.theme.colors.light};
+  color: ${props => (
+    props.selectedTheme === 'light' ? props.theme.colors.light : props.theme.colors.primary
+  )};
   text-decoration: none;
   padding: 1rem;
   font-weight: bold;
