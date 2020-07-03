@@ -1,8 +1,10 @@
+require('dotenv-flow').config()
+  
 const settings = {
   "name": "ljmv-frontity",
   "state": {
     "frontity": {
-      "url": "https://ljmv.artlyticalmedia.com",
+      "url": process.env.FRONTITY_URL,
       "title": "Linda Jean's Restaurant Martha's Vineyard",
       "description": "WordPress installation for Frontity development"
     }
@@ -15,7 +17,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          api: "https://ljmv.artlyticalmedia.com/wp-json/",
+          api: process.env.STATE_SOURCE_API,
           homepage: "/home"
         }
       }
