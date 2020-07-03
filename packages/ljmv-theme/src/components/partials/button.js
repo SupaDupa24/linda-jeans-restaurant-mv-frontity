@@ -9,13 +9,13 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
     }
   }
   switch(buttonStyle) {
-    case 'outline':
+    case 'lightOutline':
       return(
         <OutlineButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
           {children}
         </OutlineButton>
       )
-    case 'filled':
+    case 'light':
       return(
         <FilledButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
           {children}
@@ -27,37 +27,46 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
           {children}
         </PrimaryButton>
       )
+    case 'secondary':
+      return(
+        <SecondaryButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
+          {children}
+        </SecondaryButton>
+      )
+    case 'primaryOutline':
+      return(
+        <PrimaryOutlineButton theme={theme} href={href} target={external ? '_blank' : '_self'} rel={ external ? 'noopener noreferrer' : ''} onClick={onClickHandler}>
+          {children}
+        </PrimaryOutlineButton>
+      )
+    default:
+        return(<pre>Wrong button style selected</pre>)
   }
 }
 
 export default connect(Button)
 
-const basicButtonStyles = css`
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 1.25rem 1.5rem;
-  text-transform: uppercase;
-
-  font-weight: bold;
-  text-decoration: none;
-`
-
 const OutlineButton = styled.a`
-  ${basicButtonStyles}  
-
-  outline: ${props => props.theme.colors.light} 2px solid;
-  color: ${props => props.theme.colors.light};
+  ${props => props.theme.buttonBase}
+  ${props => props.theme.lightOutlineButton}
 `
-const FilledButton = styled.a`
-  ${basicButtonStyles}
 
-  background: ${props => props.theme.colors.light};
-  color: ${props => props.theme.colors.primary};
+const FilledButton = styled.a`
+  ${props => props.theme.buttonBase}
+  ${props => props.theme.lightButton}
 `
 
 const PrimaryButton = styled.a`
-  ${basicButtonStyles}
+  ${props => props.theme.buttonBase}
+  ${props => props.theme.primaryButton}
+`
 
-  background: ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.light};
+const SecondaryButton = styled.a`
+  ${props => props.theme.buttonBase}
+  ${props => props.theme.secondaryButton}
+`
+
+const PrimaryOutlineButton = styled.a`
+  ${props => props.theme.buttonBase}
+  ${props => props.theme.primaryOutlineButton}
 `

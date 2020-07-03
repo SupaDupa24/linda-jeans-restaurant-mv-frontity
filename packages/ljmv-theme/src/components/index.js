@@ -20,7 +20,74 @@ const Root = ({state}) => {
       light: '#F8f6e9',
       primary: '#3c292f',
       secondary: '#6b5d75'
-    }
+    },
+    buttonBase: css`
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1.25rem 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    
+      font-weight: bold;
+      text-decoration: none;
+
+      transition: all 0.125s ease-in-out;
+      cursor: pointer;
+    `,
+    lightOutlineButton: css`
+      border: #F8f6e9 2px solid;
+      color: #F8f6e9;
+      background: transparent;
+
+      &:hover,
+      &:focus {
+        background: #F8f6e9;
+        color: #3c292f;
+      }
+    `,
+    lightButton: css`
+      background: #F8f6e9;
+      color: #3c292f;
+
+      &:hover,
+      &:focus {
+        background: #3c292f;
+        color: #F8f6e9;
+      }
+    `,
+    primaryButton: css`
+      border: #3c292f 2px solid;
+      background: #3c292f;
+      color: #F8f6e9;
+
+      &:hover,
+      &:focus {
+        background: #F8f6e9;
+        color: #3c292f;
+      }
+    `,
+    secondaryButton: css`
+      border: #6b5d75 2px solid;
+      background: #6b5d75;
+      color: #F8f6e9;
+
+      &:hover,
+      &:focus {
+        background: #3c292f;
+        border-color: #3c292f;
+      }
+    `,
+    primaryOutlineButton: css`
+      outline: #3c292f 2px solid;
+      color: #3c292f;
+      background: transparent;
+
+      &:hover,
+      &:focus {
+        background: #3c292f;
+        color: #F8f6e9;
+      }
+    `
   }
 
   return (
