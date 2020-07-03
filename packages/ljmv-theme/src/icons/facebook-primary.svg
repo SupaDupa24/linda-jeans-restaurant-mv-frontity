@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="facebook-primary.svg"
+   id="svg3"
+   version="1.1"
+   viewBox="0 0 20.568 38.402"
+   height="38.402"
+   width="20.568">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg3"
+     inkscape:window-maximized="1"
+     inkscape:window-y="243"
+     inkscape:window-x="0"
+     inkscape:cy="19.201"
+     inkscape:cx="1.7081476"
+     inkscape:zoom="22.446747"
+     showgrid="false"
+     id="namedview5"
+     inkscape:window-height="1016"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <path
+     style="fill:#3c292f;fill-opacity:1"
+     fill="#fdfaee"
+     transform="translate(-1.609)"
+     d="M20.829,21.6l1.067-6.95H15.227v-4.51c0-1.9.932-3.755,3.918-3.755h3.032V.47A36.971,36.971,0,0,0,16.8,0C11.3,0,7.714,3.329,7.714,9.355v5.3h-6.1V21.6h6.1V38.4h7.513V21.6Z"
+     data-name="Icon awesome-facebook-f"
+     id="Icon_awesome-facebook-f" />
+</svg>

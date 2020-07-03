@@ -2,7 +2,6 @@ import React from 'react'
 import {connect, Global, css, styled} from 'frontity'
 import Switch from '@frontity/components/switch'
 
-import Header from './global/header'
 import Footer from './global/footer'
 
 import Loading from './loading'
@@ -112,16 +111,12 @@ const Root = ({state}) => {
         `}
       />
 
-      <Header theme={theme} />
-
-      <SiteContent>
-        <Switch>
-          <Loading when={data.isFetching} theme={theme} />
-          <Home when={data.isHome} theme={theme} />
-          <Post when={data.isPostType} theme={theme} />
-          <PageError when={data.isError} theme={theme} />
-        </Switch>
-      </SiteContent>
+      <Switch>
+        <Loading when={data.isFetching} theme={theme} />
+        <Home when={data.isHome} theme={theme} />
+        <Post when={data.isPostType} theme={theme} />
+        <PageError when={data.isError} theme={theme} />
+      </Switch>
 
       <Footer theme={theme} />
     </>
@@ -129,7 +124,3 @@ const Root = ({state}) => {
 }
 
 export default connect(Root)
-
-const SiteContent = styled.main`
-  flex: 1;
-`

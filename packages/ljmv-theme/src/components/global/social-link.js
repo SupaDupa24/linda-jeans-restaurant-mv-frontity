@@ -6,24 +6,29 @@ import google from '../../icons/google.svg'
 import instagram from '../../icons/instagram.svg'
 import tripadvisor from '../../icons/tripadvisor.svg'
 import yelp from '../../icons/yelp.svg'
+import facebookPrimary from '../../icons/facebook-primary.svg'
+import googlePrimary from '../../icons/google-primary.svg'
+import instagramPrimary from '../../icons/instagram-primary.svg'
+import tripadvisorPrimary from '../../icons/tripadvisor-primary.svg'
+import yelpPrimary from '../../icons/yelp-primary.svg'
 
-const NavLink = ({href, children, theme, network}) => {
+const NavLink = ({href, children, theme, network, selectedTheme}) => {
   let icon
   switch(network) {
     case 'facebook':
-      icon = facebook
+      icon = selectedTheme === 'light' ? facebook : facebookPrimary
       break
     case 'google_my_business':
-      icon = google
+      icon = selectedTheme === 'light' ? google : googlePrimary
       break
     case 'instagram':
-      icon = instagram
+      icon = selectedTheme === 'light' ? instagram : instagramPrimary
       break
     case 'tripadvisor':
-      icon = tripadvisor
+      icon = selectedTheme === 'light' ? tripadvisor : tripadvisorPrimary
       break
     case 'yelp':
-      icon = yelp
+      icon = selectedTheme === 'light' ? yelp : yelpPrimary
       break
   }
 
