@@ -12,7 +12,11 @@ const PageHero = ({hero, theme}) => {
 export default PageHero
 
 const PageHeroContainer = styled.div`
-  padding: 10% 0;
+  padding: 12.5% 0;
+
+  ${props => props.theme.breakPoints.tablet} {
+    padding: 25% 0;
+  }
 
   background-image: url(${props => props.hero.img});
   background-repeat: no-repeat;
@@ -43,6 +47,14 @@ const PageHeroContainer = styled.div`
     text-transform: uppercase;
     color: ${props => props.theme.colors.light};
     font-weight: bold;
-    font-size: 10rem;
+    font-size: 9rem;
+
+    ${props => props.theme.breakPoints.tablet} {
+      font-size: 6rem;
+    }
+
+    ${props => props.theme.breakPoints.mobile} {
+      font-size: 3.5rem;
+    }
   }
 `

@@ -18,11 +18,11 @@ const ContactUs = ({state, theme}) => {
       <ContactContent>
         {post.acf.content.map((section, index) => 
           <Switch key={index}>
-            <ContactFormSection when={section.acf_fc_layout == 'text_link'}>
+            <ContactFormSection theme={theme} when={section.acf_fc_layout == 'text_link'}>
               <TextLink section={section} theme={theme} />
             </ContactFormSection>
 
-            <ContactFormSection when={section.acf_fc_layout == 'contact_form_section'}>
+            <ContactFormSection theme={theme} when={section.acf_fc_layout == 'contact_form_section'}>
               <ContactForm section={section} theme={theme} />
             </ContactFormSection>
           </Switch>
@@ -36,9 +36,14 @@ export default connect(ContactUs)
 
 const ContactContent = styled.div`
   margin: 2rem 0;
+  padding: 0 1rem;
 `
 
 const ContactFormSection = styled.div`
   max-width: 960px;
   margin: 3rem auto;
+
+  ${props => props.theme.breakPoints.mobile} {
+    margin: 1rem auto;
+  }
 `
