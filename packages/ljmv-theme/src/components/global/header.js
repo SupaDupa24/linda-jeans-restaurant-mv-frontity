@@ -51,6 +51,7 @@ const StyledHeader = styled.header`
 
     img {
       max-height: 3rem;
+      padding: 0 1rem;
     }
 
     nav {

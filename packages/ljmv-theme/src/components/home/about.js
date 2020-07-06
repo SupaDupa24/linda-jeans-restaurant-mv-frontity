@@ -52,6 +52,7 @@ const Row = styled.div`
   display: flex;
   width: 960px;
   margin: 2rem auto;
+  padding: 0 1rem;
 `
 
 const AboutTitleText = styled.div`

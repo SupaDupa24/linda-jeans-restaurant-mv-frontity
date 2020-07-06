@@ -175,7 +175,7 @@ const Root = ({state}) => {
           }
 
           hr {
-            margin: 1rem 0;
+            margin: 1rem;
             border: 0;
             border-top: 2px solid ${theme.colors.primary};
 
