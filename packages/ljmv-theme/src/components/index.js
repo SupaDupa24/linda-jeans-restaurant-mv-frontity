@@ -2,6 +2,8 @@ import React from 'react'
 import {connect, Global, css, styled} from 'frontity'
 import Switch from '@frontity/components/switch'
 
+import Color from 'color'
+
 import Footer from './global/footer'
 
 import Loading from './loading'
@@ -18,7 +20,9 @@ const Root = ({state}) => {
   const themeColors = {
       light: '#F8f6e9',
       primary: '#3c292f',
-      secondary: '#6b5d75'
+      secondary: '#6b5d75',
+      success: '#8fdd88',
+      failure: '#f7796e'
     }
   
   const themeButtons = {
@@ -97,10 +101,29 @@ const Root = ({state}) => {
     navbar: `@media (max-width: 790px)`
   }
 
+  const themeCards = {
+    base: css`
+      border: 1px solid ${themeColors.primary};
+      padding: 1rem 1.5rem;
+      text-align: left;
+    `,
+    success: css`
+      border-color: ${Color(themeColors.success).darken(0.2).string()};
+      background: ${themeColors.success};
+      background: ${Color(themeColors.success).fade(0.5).string()};
+    `,
+    failure: css`
+      border-color: ${Color(themeColors.failure).darken(0.2).string()};
+      background: ${themeColors.failure};
+      background: ${Color(themeColors.failure).fade(0.5).string()};
+    `
+  }
+
   const theme = {
     colors: themeColors,
     buttons: themeButtons,
-    breakPoints: themeBreakPoints
+    breakPoints: themeBreakPoints,
+    cards: themeCards
   }
 
   return (
