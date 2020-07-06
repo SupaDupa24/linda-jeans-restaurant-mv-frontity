@@ -45,9 +45,9 @@ const EmbeddedMenu = ({menu, theme}) => {
 
 const MenuNavigation = ({menus, selectMenu, theme}) => {
   return (
-    <>
+    <div>
       {menus.map((menu, index) => <MenuNavLink theme={theme} key={`${menu.title.replace(/[^a-zA-Z ]/g, '')}-${index}`} onClick={(e) => selectMenu(menu)}>{menu.title}</MenuNavLink>)}
-    </>
+    </div>
   )
 }
 
@@ -64,22 +64,24 @@ const Menus = ({state, libraries, theme}) => {
     <>
       <PageHero hero={{title: post.title.rendered, img: state.source.attachment[post.featured_media].source_url}} theme={theme} />
 
-      <MenusSection>
+      <ContentSection theme={theme}>
         <hr />
 
         <MenuNavigation menus={post.acf.menus} selectMenu={selectMenu} theme={theme}/>
 
         <Html2React html={post.content.rendered} />
+      </ContentSection>
 
+      <EmbedSection theme={theme}>
         <EmbeddedMenu menu={selectedMenu} theme={theme} />
 
         <hr />
-      </MenusSection>
+      </EmbedSection>
 
-      <MenuButtonSection>
-        <Button theme={theme} buttonStyle='primary' href={options.acf.online_ordering_link.url} external={true}>Order Online</Button>
+      <MenuButtonSection theme={theme}>
+        <Button theme={theme} buttonStyle='primary' href={options.acf.online_ordering_link.url} external={true}>Order Here</Button>
 
-        {selectedMenu.pdf && <Button theme={theme} buttonStyle='secondary' href={selectedMenu.pdf.url} external={true}>Download PDF Menu</Button>}
+        {selectedMenu.pdf && <Button theme={theme} buttonStyle='secondary' href={selectedMenu.pdf.url} external={true}>PDF Menu</Button>}
       </MenuButtonSection>
     </>
   )
@@ -87,11 +89,30 @@ const Menus = ({state, libraries, theme}) => {
 
 export default connect(Menus)
 
-const MenusSection = styled.div`
+const ContentSection = styled.div`
   max-width: 960px;
   margin: 0 auto;
 
-  padding: 3rem 0;
+  padding: 3rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  ${props => props.theme.breakPoints.mobile} {
+    padding: 3rem 1rem 1rem;
+
+    p {
+      order: 0;
+    }
+
+    div {
+      order: 2;
+    }
+
+    hr {
+      order: 1;
+    }
+  }
 
   text-align: center;
 
@@ -107,13 +128,28 @@ const MenusSection = styled.div`
   }
 `
 
+const EmbedSection = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+
+  padding: 3rem 1rem;
+
+  ${props => props.theme.breakPoints.mobile} {
+    padding: 1rem 1rem 0;
+  }
+`
+
 const MenuButtonSection = styled.div`
   max-width: 960px;
   margin: 0 auto;
 
-  padding: 3rem 0;
+  padding: 3rem 1rem;
   display: flex;
   justify-content: space-between;
+
+  ${props => props.theme.breakPoints.mobile} {
+    padding: 0 1rem 1rem;
+  }
 `
 
 const MenuNavLink = styled.button`
@@ -123,6 +159,13 @@ const MenuNavLink = styled.button`
   padding: 0.5rem 0.75rem;
   margin: 1.5rem 1.5rem 2.5rem;
   font-size: 1.15rem;
+
+  ${props => props.theme.breakPoints.mobile} {
+    width: calc(50% - 2rem);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
 `
 
 const StyledEmbed = styled.div`
@@ -133,6 +176,12 @@ const StyledEmbed = styled.div`
   position: relative;
   margin: 3rem 10px;
   overflow: hidden;
+
+  ${props => props.theme.breakPoints.mobile} {
+    margin: 1rem 10px;
+    height: 60%;
+    height: 60vh;
+  }
 
   > div {
     border: 1px ${props => props.theme.colors.primary} solid;
@@ -162,6 +211,10 @@ const StyledEmbed = styled.div`
           vertical-align: middle;
           background: ${props => props.theme.colors.primary};
           margin-right: 0.6rem;
+
+          ${props => props.theme.breakPoints.mobile} {
+            width: 10%;
+          }
         }
         
         &:before {
