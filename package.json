@@ -17,7 +17,9 @@
     "@frontity/html2react": "^1.3.4",
     "@frontity/tiny-router": "^1.2.1",
     "@frontity/wp-source": "^1.8.0",
+    "dotenv-flow": "^3.2.0",
     "frontity": "^1.9.0",
     "ljmv-theme": "file:packages/ljmv-theme"
-  }
+  },
+  "devDependencies": {}
 }
