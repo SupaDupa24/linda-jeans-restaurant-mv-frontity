@@ -43,7 +43,7 @@ const Footer = ({state, theme}) => {
         <FinePrint theme={theme}>
           <div>
             <address>
-              {options.acf.address.street_number} {options.acf.address.street_name}, {options.acf.address.city}, {options.acf.address.state_short} | <span dangerouslySetInnerHTML={{__html:name}} /> | Copyright 2020 {/* TODO auto-update this year value */}
+              {options.acf.address.street_number} {options.acf.address.street_name}, {options.acf.address.city}, {options.acf.address.state_short} | <span dangerouslySetInnerHTML={{__html:name}} /> | Copyright {new Date().getFullYear()} {/* TODO auto-update this year value */}
             </address>
           </div>
 
@@ -67,6 +67,10 @@ const StyledFooter = styled.footer`
 
   color: ${props => props.theme.colors.light};
 
+  ${props => props.theme.breakPoints.tablet} {
+    padding-top: 0;
+  }
+
   h2 {
     font-size: 1rem;
 
@@ -81,7 +85,9 @@ const StyledFooter = styled.footer`
     max-width: 960px;
     margin: 0 auto;
 
-
+    ${props => props.theme.breakPoints.tablet} {
+      border-top: 0;
+    }
   }
 `
 
@@ -90,6 +96,10 @@ const Row = styled.div`
   padding: 5rem 1rem;
   width: 100%;
   flex-wrap: wrap;
+
+  ${props => props.theme.breakPoints.tablet} {
+    padding: 3rem 1rem 2rem;
+  }
   
   > div {
     width: 33%;
@@ -108,6 +118,10 @@ const Row = styled.div`
       h2:after {
         margin-right: 0;
         margin-left: auto;
+
+        ${props => props.theme.breakPoints.tablet} {
+          margin-right: auto;
+        }
       }
 
       input {
@@ -160,6 +174,10 @@ const Row = styled.div`
         max-width: 75%;
         font-size: 1rem;
       }
+
+      h2 {
+        font-size: 1.5rem;
+      }
     }
 
     p {
@@ -191,25 +209,25 @@ const FinePrint = styled.div`
   padding: 0.25rem 0;
   border-top: 1px solid ${props => props.theme.colors.light};
 
-  ${props => props.theme.breakPoints.mobile} {
+  ${props => props.theme.breakPoints.tablet} {
     flex-direction: column;
     border: none;
-  }
 
-  &:before {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 75%;
-    margin: 0 auto 1rem;
-    background: ${props => props.theme.colors.light};
+    &:before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 75%;
+      margin: 0 auto 1rem;
+      background: ${props => props.theme.colors.light};
+    }
   }
 
   div {
     width: 50%;
     font-size: 0.57rem;
 
-    ${props => props.theme.breakPoints.mobile} {
+    ${props => props.theme.breakPoints.tablet} {
       width: 75%;
       margin: 0 auto 0.5rem;
 
