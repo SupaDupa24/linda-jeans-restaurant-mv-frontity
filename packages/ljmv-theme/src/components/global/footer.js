@@ -6,8 +6,7 @@ import SocialLink from './social-link'
 
 const Footer = ({state, theme}) => {
   const options = state.source.get('acf-options-page')
-  const lightLogo = true // TODO REPLACE THIS WITH SELECTOR ON PAGE
-  const logo = lightLogo ? options.acf.logos.light : options.acf.logos.dark
+  const logo = options.acf.logos.light
 
   const {name} = (state.source.get('nameAndDescription'))
 
@@ -21,7 +20,7 @@ const Footer = ({state, theme}) => {
 
             <SocialLinkContainer>
               {Object.keys(options.acf.social_media).map((keyName, keyIndex) => 
-                <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme}>{keyName.replace(/_/g, ' ')}</SocialLink>
+                <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme} selectedTheme='light'>{keyName.replace(/_/g, ' ')}</SocialLink>
               )}
             </SocialLinkContainer>
           </div>
