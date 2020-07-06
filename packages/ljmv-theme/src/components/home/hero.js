@@ -6,22 +6,24 @@ import Button from '../partials/button'
 const Hero = ({hero, options, backgroundImage, theme}) => {
   return (
     <HeroContainer backgroundImage={backgroundImage} theme={theme}>
-      <h1>{hero.title}</h1>
-      <h2>{hero.subtitle}</h2>
+      <HeroContent theme={theme}>
+        <h1>{hero.title}</h1>
+        <h2>{hero.subtitle}</h2>
 
-      {hero.buttons.map((button, index) => {
-        const onlineOrdering = button.online_ordering_button
+        {hero.buttons.map((button, index) => {
+          const onlineOrdering = button.online_ordering_button
 
-        if(onlineOrdering) {
-          return(
-            <Button theme={theme} key={index.toString()} buttonStyle={button.style} href={options.acf.online_ordering_link.url} external={true}>{button.title}</Button>
-          )
-        } else {
-          return (
-            <Button theme={theme} key={index.toString()} href={button.link.url} buttonStyle={button.style}>{button.link.title}</Button>
-          )
-        }
-      })}
+          if(onlineOrdering) {
+            return(
+              <Button theme={theme} key={index.toString()} buttonStyle={button.style} href={options.acf.online_ordering_link.url} external={true}>{button.title}</Button>
+            )
+          } else {
+            return (
+              <Button theme={theme} key={index.toString()} href={button.link.url} buttonStyle={button.style}>{button.link.title}</Button>
+            )
+          }
+        })}
+      </HeroContent>
     </HeroContainer>
   )
 }
@@ -29,7 +31,7 @@ const Hero = ({hero, options, backgroundImage, theme}) => {
 export default Hero
 
 const HeroContainer = styled.div`
-  padding: 20% 5rem;
+  padding: 20% 1rem;
   background-image: ${props => `url(${props.backgroundImage})`};
   background-repeat: no-repeat;
   background-size: 100%;
@@ -47,8 +49,14 @@ const HeroContainer = styled.div`
     left: 0;
     right: 0;
     background: transparent;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.33);
     z-index: -1;
+  }
+
+  ${props => props.theme.breakPoints.mobile} {
+    min-height: calc(100vh - 4rem);
+    padding-top: 25vh;
+    padding-bottom: 0;
   }
 
   h1, h2 {
@@ -60,6 +68,10 @@ const HeroContainer = styled.div`
     text-transform: uppercase;
     font-weight: bold;
     font-size: 3.2rem;
+
+    ${props => props.theme.breakPoints.mobile} {
+      font-size: 2.4rem;
+    } 
   }
 
   h2 {
@@ -70,5 +82,19 @@ const HeroContainer = styled.div`
     &:after {
       display: none;
     }
+
+    ${props => props.theme.breakPoints.mobile} {
+      font-size: 1.08rem;
+    }
+  }
+`
+
+const HeroContent = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+
+  ${props => props.theme.breakPoints.mobile} {
+    padding: 2rem 1rem;
+    text-align: center;
   }
 `
