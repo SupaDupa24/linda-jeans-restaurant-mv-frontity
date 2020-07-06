@@ -57,8 +57,6 @@ const Menus = ({state, libraries, theme}) => {
   const Html2React = libraries.html2react.Component
   const [selectedMenu, selectMenu] = useState(post.acf.menus[0])
   const options = state.source.get('acf-options-page')
-
-  console.log(selectedMenu)
   
   return (
     <>
