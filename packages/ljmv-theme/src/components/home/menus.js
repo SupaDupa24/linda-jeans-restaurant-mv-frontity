@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from '@frontity/components/image'
 import {styled} from 'frontity'
 
 import Button from '../partials/button'
