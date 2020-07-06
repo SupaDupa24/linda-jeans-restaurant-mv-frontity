@@ -117,8 +117,8 @@ const MenuButtonSection = styled.div`
 `
 
 const MenuNavLink = styled.button`
-  ${props => props.theme.buttonBase}
-  ${props => props.theme.primaryOutlineButton}
+  ${props => props.theme.buttons.base}
+  ${props => props.theme.buttons.primaryOutline}
 
   padding: 0.5rem 0.75rem;
   margin: 1.5rem 1.5rem 2.5rem;

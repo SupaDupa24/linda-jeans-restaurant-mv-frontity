@@ -47,26 +47,26 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
 export default connect(Button)
 
 const OutlineButton = styled.a`
-  ${props => props.theme.buttonBase}
-  ${props => props.theme.lightOutlineButton}
+  ${props => props.theme.buttons.base}
+  ${props => props.theme.buttons.lightOutline}
 `
 
 const FilledButton = styled.a`
-  ${props => props.theme.buttonBase}
-  ${props => props.theme.lightButton}
+  ${props => props.theme.buttons.base}
+  ${props => props.theme.buttons.light}
 `
 
 const PrimaryButton = styled.a`
-  ${props => props.theme.buttonBase}
-  ${props => props.theme.primaryButton}
+  ${props => props.theme.buttons.base}
+  ${props => props.theme.buttons.primary}
 `
 
 const SecondaryButton = styled.a`
-  ${props => props.theme.buttonBase}
-  ${props => props.theme.secondaryButton}
+  ${props => props.theme.buttons.base}
+  ${props => props.theme.buttons.secondary}
 `
 
 const PrimaryOutlineButton = styled.a`
-  ${props => props.theme.buttonBase}
-  ${props => props.theme.primaryOutlineButton}
+  ${props => props.theme.buttons.base}
+  ${props => props.theme.buttons.primaryOutline}
 `

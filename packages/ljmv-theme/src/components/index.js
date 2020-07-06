@@ -15,13 +15,14 @@ import Trebuchet from '../fonts/trebuc.ttf'
 const Root = ({state}) => {
   const data = state.source.get(state.router.link)
 
-  const theme = {
-    colors: {
+  const themeColors = {
       light: '#F8f6e9',
       primary: '#3c292f',
       secondary: '#6b5d75'
-    },
-    buttonBase: css`
+    }
+  
+  const themeButtons = {
+    base: css`
       display: inline-block;
       margin: 0.5rem;
       padding: 1.25rem 1.5rem;
@@ -34,60 +35,72 @@ const Root = ({state}) => {
       transition: all 0.125s ease-in-out;
       cursor: pointer;
     `,
-    lightOutlineButton: css`
-      border: #F8f6e9 2px solid;
-      color: #F8f6e9;
+    light: css`
+      background: ${themeColors.light};
+      color: ${themeColors.primary};
+
+      &:hover,
+      &:focus {
+        background: ${themeColors.primary};
+        color: ${themeColors.light};
+      }
+    `,
+    primary: css`
+      border: ${themeColors.primary} 2px solid;
+      background: ${themeColors.primary};
+      color: ${themeColors.light};
+
+      &:hover,
+      &:focus {
+        background: ${themeColors.light};
+        color: ${themeColors.primary};
+      }
+    `,
+    secondary: css`
+      border: ${themeColors.secondary} 2px solid;
+      background: ${themeColors.secondary};
+      color: ${themeColors.light};
+
+      &:hover,
+      &:focus {
+        background: ${themeColors.primary};
+        border-color: ${themeColors.primary};
+      }
+    `,
+    lightOutline: css`
+      border: ${themeColors.light} 2px solid;
+      color: ${themeColors.light};
       background: transparent;
 
       &:hover,
       &:focus {
-        background: #F8f6e9;
-        color: #3c292f;
+        background: ${themeColors.light};
+        color: ${themeColors.primary};
       }
     `,
-    lightButton: css`
-      background: #F8f6e9;
-      color: #3c292f;
-
-      &:hover,
-      &:focus {
-        background: #3c292f;
-        color: #F8f6e9;
-      }
-    `,
-    primaryButton: css`
-      border: #3c292f 2px solid;
-      background: #3c292f;
-      color: #F8f6e9;
-
-      &:hover,
-      &:focus {
-        background: #F8f6e9;
-        color: #3c292f;
-      }
-    `,
-    secondaryButton: css`
-      border: #6b5d75 2px solid;
-      background: #6b5d75;
-      color: #F8f6e9;
-
-      &:hover,
-      &:focus {
-        background: #3c292f;
-        border-color: #3c292f;
-      }
-    `,
-    primaryOutlineButton: css`
-      outline: #3c292f 2px solid;
-      color: #3c292f;
+    primaryOutline: css`
+      outline: ${themeColors.primary} 2px solid;
+      color: ${themeColors.primary};
       background: transparent;
 
       &:hover,
       &:focus {
-        background: #3c292f;
-        color: #F8f6e9;
+        background: ${themeColors.primary};
+        color: ${themeColors.light};
       }
     `
+  }
+
+  const themeBreakPoints = {
+    mobile: `@media (max-width: 576px)`,
+    tablet: `@media (max-width: 950px)`,
+    navbar: `@media (max-width: 790px)`
+  }
+
+  const theme = {
+    colors: themeColors,
+    buttons: themeButtons,
+    breakPoints: themeBreakPoints
   }
 
   return (
