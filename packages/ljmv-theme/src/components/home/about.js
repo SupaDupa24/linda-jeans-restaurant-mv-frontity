@@ -5,11 +5,11 @@ import BackgroundImage from '../partials/background-image'
 
 import Link from '../partials/link'
 
-const About = ({section, options}) => {
+const About = ({section, options, theme}) => {
   return (
     <AboutSection>
       <Row>
-        <AboutTitleText>
+        <AboutTitleText theme={theme}>
           <h2>{section.title}</h2>
 
           <p>{section.text}</p>
@@ -17,7 +17,7 @@ const About = ({section, options}) => {
           <Link href={section.link.url}>{section.link.title}</Link>
         </AboutTitleText>
 
-        <ContactInformation>
+        <ContactInformation theme={theme}>
           <h3>Phone</h3>
 
           <a href={`tel:${options.acf.phone_number.replace(/\D/g,'')}`}>{options.acf.phone_number}</a>
@@ -50,19 +50,23 @@ const AboutSection = styled.div`
 
 const Row = styled.div`
   display: flex;
-  width: 960px;
+  max-width: 960px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem;
 `
 
 const AboutTitleText = styled.div`
   width: 67%;
-  padding: 1rem;
+  padding-right: 0.5rem;
+
+  ${props => props.theme.breakPoints.tablet} {
+    width: 100%;
+  }
 `
 
 const ContactInformation = styled.div`
   width: 33%;
-  padding: 1rem;
+  padding-left: 0.5rem;
 
   h3 + * {
     margin-bottom: 1rem;
@@ -71,5 +75,9 @@ const ContactInformation = styled.div`
 
   address {
     font-style: normal;
+  }
+
+  ${props => props.theme.breakPoints.tablet} {
+    display: none;
   }
 `
