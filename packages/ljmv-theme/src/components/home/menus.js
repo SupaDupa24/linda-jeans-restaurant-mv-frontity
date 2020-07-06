@@ -15,12 +15,12 @@ const Menus = ({section, theme}) => {
         <Button href={section.link.url} buttonStyle={'primary'} theme={theme}>{section.link.title}</Button>
       </MenusTitleText>
 
-      <ImageCollage>
-        <BigImage>
+      <ImageCollage theme={theme}>
+        <BigImage theme={theme}>
           <div style={{backgroundImage: `url(${section.images[0].url})`}} />
         </BigImage>
 
-        <SmallImages>
+        <SmallImages theme={theme}>
           <div style={{backgroundImage: `url(${section.images[1].url})`}} />
           <div style={{backgroundImage: `url(${section.images[2].url})`}} />
         </SmallImages>
@@ -32,13 +32,14 @@ const Menus = ({section, theme}) => {
 export default Menus
 
 const MenusSection = styled.div`
-  margin: 3rem auto;
+  margin: 3rem auto 1rem;
 `
 
 const MenusTitleText = styled.div`
   max-width: 960px;
   margin: 0 auto 2rem;
   text-align: center;
+  padding: 0 1rem;
 
   h2:after {
     margin-left: auto;
@@ -56,6 +57,10 @@ const ImageCollage = styled.div`
   width: 100%;
   position: relative;
   padding-bottom: 50%;
+   
+  ${props => props.theme.breakPoints.mobile} {
+    padding-bottom: 150%;
+  }
 
   > div > div {
     background-repeat: no-repeat;
@@ -78,6 +83,11 @@ const BigImage = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+  }
+
+  ${props => props.theme.breakPoints.mobile} {
+    right: 0;
+    bottom: calc(66.67% + 0.5rem);
   }
 `
 
@@ -102,5 +112,10 @@ const SmallImages = styled.div`
     &:nth-of-type(2) {
       top: calc(50% + 0.5rem);
     }
+  }
+
+  ${props => props.theme.breakPoints.mobile} {
+    left: 0;
+    top: calc(33.33% + 0.5rem);
   }
 `
