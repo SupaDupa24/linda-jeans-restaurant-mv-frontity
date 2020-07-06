@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect, styled} from 'frontity'
+import {connect, styled, css} from 'frontity'
 
 import facebook from '../../icons/facebook.svg'
 import google from '../../icons/google.svg'
@@ -33,7 +33,12 @@ const NavLink = ({href, children, theme, network, selectedTheme}) => {
   }
 
   return(
-    <div>
+    <div css={css`
+      ${theme.breakPoints.navbar} {
+        flex-basis: 20%;
+        display: inline-block;
+      }
+    `}>
       <Anchor theme={theme} href={href} icon={`url(${icon})`} target="_blank" rel="noopener noreferrer">
         <span>{children}</span>
       </Anchor>

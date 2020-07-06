@@ -1,9 +1,26 @@
 import React from 'react'
 import {connect, styled} from 'frontity'
 
+import { slide as Menu } from 'react-burger-menu'
+
 import Link from '../partials/link'
 import NavLink from './nav-link'
 import SocialLink from './social-link'
+
+const NavigationLinks = ({socialMedia, theme, selectedTheme}) => (
+  <StyledNav theme={theme}>
+    <NavLink href="/" theme={theme} selectedTheme={selectedTheme}>Welcome</NavLink>
+    <NavLink href="/menus/" theme={theme} selectedTheme={selectedTheme}>Menus</NavLink>
+    <NavLink href="/about-us/" theme={theme} selectedTheme={selectedTheme}>About Us</NavLink>
+    <NavLink href="/contact-us/" theme={theme} selectedTheme={selectedTheme}>Contact Us</NavLink>
+
+    <SocialMediaLinks theme={theme}>
+      {Object.keys(socialMedia).map((keyName, keyIndex) => 
+        <SocialLink key={keyIndex} network={keyName} href={socialMedia[keyName]} theme={theme} selectedTheme={selectedTheme}>{keyName.replace(/_/g, ' ')}</SocialLink>
+      )}
+    </SocialMediaLinks>
+  </StyledNav>
+)
 
 const Header = ({state, theme, selectedTheme}) => {
   const options = state.source.get('acf-options-page')
@@ -12,21 +29,61 @@ const Header = ({state, theme, selectedTheme}) => {
 
   const {name} = (state.source.get('nameAndDescription'))
 
+  const menuStyles = {
+    bmBurgerButton: {
+      position: 'absolute',
+      width: '2.15rem',
+      height: '1.85rem',
+      right: '1.625rem',
+      top: '1.625rem'
+    },
+    bmBurgerBars: {
+      background: selectedTheme === 'light' ? theme.colors.light : theme.colors.primary,
+      borderRadius: '1rem',
+      height: '15%'
+    },
+    bmCrossButton: {
+      height: '24px',
+      width: '24px'
+    },
+    bmCross: {
+      background: theme.colors.light
+    },
+    bmMenuWrap: {
+      position: 'fixed',
+      height: '100%'
+    },
+    bmMenu: {
+      background: theme.colors.primary,
+      padding: '2.5em 1.5em 0',
+      fontSize: '1.15em'
+    },
+    bmItemList: {
+      color: theme.colors.light,
+      padding: '0.8em'
+    },
+    bmItem: {
+      display: 'inline-block'
+    },
+    bmOverlay: {
+      background: 'rgba(0, 0, 0, 0.3)'
+    }
+  }
+
   return (
     <StyledHeader theme={theme}>
       <div>
         <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
 
-        <nav>
-          <NavLink href="/" theme={theme} selectedTheme={selectedTheme}>Welcome</NavLink>
-          <NavLink href="/menus/" theme={theme} selectedTheme={selectedTheme}>Menus</NavLink>
-          <NavLink href="/about-us/" theme={theme} selectedTheme={selectedTheme}>About Us</NavLink>
-          <NavLink href="/contact-us/" theme={theme} selectedTheme={selectedTheme}>Contact Us</NavLink>
+        <DesktopNavigation theme={theme}>
+          <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme={selectedTheme} />
+        </DesktopNavigation>
 
-          {Object.keys(options.acf.social_media).map((keyName, keyIndex) => 
-            <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme} selectedTheme={selectedTheme}>{keyName.replace(/_/g, ' ')}</SocialLink>
-          )}
-        </nav>
+        <MobileNavigation theme={theme}>
+          <Menu isOpen={false} right styles={menuStyles} isOpen={false}>
+            <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
+          </Menu>
+        </MobileNavigation>
       </div>
     </StyledHeader>
   )
@@ -53,9 +110,41 @@ const StyledHeader = styled.header`
       max-height: 3rem;
       padding: 0 1rem;
     }
+  }
+`
 
-    nav {
-      display: flex;
+const MobileNavigation = styled.div`
+  display: none;
+
+  ${props => props.theme.breakPoints.navbar} {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+  }
+`
+
+const DesktopNavigation = styled.div`
+  ${props => props.theme.breakPoints.navbar} {
+    display: none;
+  }
+`
+
+const StyledNav = styled.nav`
+  display: flex;
+
+  ${props => props.theme.breakPoints.navbar} {
+    text-align: right;
+    flex-direction: column;
+
+    > div {
+      margin-bottom: 1.5rem;
     }
   }
+`
+
+const SocialMediaLinks = styled.div`
+  display: flex;
 `
