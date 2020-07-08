@@ -19,7 +19,6 @@
     "@frontity/wp-source": "^1.8.0",
     "dotenv-flow": "^3.2.0",
     "frontity": "^1.9.0",
-    "frontity-contact-form-7": "^0.1.4",
     "ljmv-theme": "file:packages/ljmv-theme"
   },
   "devDependencies": {}

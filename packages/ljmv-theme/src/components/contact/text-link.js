@@ -9,7 +9,7 @@ const TextLink = ({section, libraries, theme}) => {
     <>
       <hr />
 
-      <Row>
+      <Row theme={theme}>
         <div>
           <h2>{section.title}</h2>
 
@@ -32,13 +32,23 @@ const Row = styled.div`
   align-items: center;
   padding: 1rem 0;
   width: 100%;
+  flex-wrap: wrap;
 
   div {
     width: 50%;
     padding: 2rem 0;
 
+    ${props => props.theme.breakPoints.mobile} {
+      width: 100%;
+      padding: 1rem 0;
+    }
+
     &:nth-of-type(2) {
       text-align: right;
+
+      ${props => props.theme.breakPoints.mobile} {
+        text-align: center;
+      }
     }
   }
 `

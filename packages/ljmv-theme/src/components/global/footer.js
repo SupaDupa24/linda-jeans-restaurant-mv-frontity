@@ -6,8 +6,7 @@ import SocialLink from './social-link'
 
 const Footer = ({state, theme}) => {
   const options = state.source.get('acf-options-page')
-  const lightLogo = true // TODO REPLACE THIS WITH SELECTOR ON PAGE
-  const logo = lightLogo ? options.acf.logos.light : options.acf.logos.dark
+  const logo = options.acf.logos.light
 
   const {name} = (state.source.get('nameAndDescription'))
 
@@ -21,9 +20,11 @@ const Footer = ({state, theme}) => {
 
             <SocialLinkContainer>
               {Object.keys(options.acf.social_media).map((keyName, keyIndex) => 
-                <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme}>{keyName.replace(/_/g, ' ')}</SocialLink>
+                <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme} selectedTheme='light'>{keyName.replace(/_/g, ' ')}</SocialLink>
               )}
             </SocialLinkContainer>
+
+            <p>Follow us on social media to stay updated</p>
           </div>
 
           <div>
@@ -42,7 +43,7 @@ const Footer = ({state, theme}) => {
         <FinePrint theme={theme}>
           <div>
             <address>
-              {options.acf.address.street_number} {options.acf.address.street_name}, {options.acf.address.city}, {options.acf.address.state_short} | <span dangerouslySetInnerHTML={{__html:name}} /> | Copyright 2020 {/* TODO auto-update this year value */}
+              {options.acf.address.street_number} {options.acf.address.street_name}, {options.acf.address.city}, {options.acf.address.state_short} | <span dangerouslySetInnerHTML={{__html:name}} /> | Copyright {new Date().getFullYear()} {/* TODO auto-update this year value */}
             </address>
           </div>
 
@@ -66,6 +67,10 @@ const StyledFooter = styled.footer`
 
   color: ${props => props.theme.colors.light};
 
+  ${props => props.theme.breakPoints.tablet} {
+    padding-top: 0;
+  }
+
   h2 {
     font-size: 1rem;
 
@@ -75,22 +80,26 @@ const StyledFooter = styled.footer`
   }
 
   > div {
-    &:before {
-      content: "";
-      display: block;
-      border-bottom: 1px solid ${props => props.theme.colors.light};
-      height: 1px;
-      flex-basis: 100%;
-    }
+    border-top: 1px solid ${props => props.theme.colors.light};
 
     max-width: 960px;
     margin: 0 auto;
+
+    ${props => props.theme.breakPoints.tablet} {
+      border-top: 0;
+    }
   }
 `
 
 const Row = styled.div`
   display: flex;
-  padding: 5rem 0;
+  padding: 5rem 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+
+  ${props => props.theme.breakPoints.tablet} {
+    padding: 3rem 1rem 2rem;
+  }
   
   > div {
     width: 33%;
@@ -109,6 +118,10 @@ const Row = styled.div`
       h2:after {
         margin-right: 0;
         margin-left: auto;
+
+        ${props => props.theme.breakPoints.tablet} {
+          margin-right: auto;
+        }
       }
 
       input {
@@ -136,7 +149,42 @@ const Row = styled.div`
         padding: 0.375rem;
         border: 1px solid ${props => props.theme.colors.light};
         text-transform: uppercase;
+        vertical-align: bottom;
+
+        transition: all 0.125s ease-in-out;
+
+        &:hover {
+          color: ${props => props.theme.colors.light};
+        }
       }
+    }
+
+    ${props => props.theme.breakPoints.tablet} {
+      width: 100%;
+      margin-bottom: 2rem;
+      text-align: center !important;
+
+      &:nth-of-type(1) {
+        h2:after {
+          margin: 0.5rem auto 0;
+        }
+      }
+
+      p {
+        max-width: 75%;
+        font-size: 1rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      margin: 0.5rem auto 0;
+      text-transform: none;
+      font-style: italic;
+      font-size: 0.8rem;
     }
   }
 `
@@ -161,9 +209,32 @@ const FinePrint = styled.div`
   padding: 0.25rem 0;
   border-top: 1px solid ${props => props.theme.colors.light};
 
+  ${props => props.theme.breakPoints.tablet} {
+    flex-direction: column;
+    border: none;
+
+    &:before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 75%;
+      margin: 0 auto 1rem;
+      background: ${props => props.theme.colors.light};
+    }
+  }
+
   div {
     width: 50%;
     font-size: 0.57rem;
+
+    ${props => props.theme.breakPoints.tablet} {
+      width: 75%;
+      margin: 0 auto 0.5rem;
+
+      &, small {
+        text-align: center !important;
+      }
+    }
 
     address {
       font-style: normal;

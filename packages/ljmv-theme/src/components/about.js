@@ -52,7 +52,7 @@ const AboutUsSection = styled.div`
   max-width: 960px;
   margin: 0 auto;
 
-  padding: 3rem 0;
+  padding: 3rem 1rem;
 
   text-align: center;
 
