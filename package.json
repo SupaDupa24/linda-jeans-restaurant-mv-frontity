@@ -21,5 +21,7 @@
     "frontity": "^1.9.0",
     "ljmv-theme": "file:packages/ljmv-theme"
   },
-  "devDependencies": {}
+  "engines": {
+    "node": "10.x"
+  }
 }
