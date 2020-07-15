@@ -38,7 +38,7 @@ const About = ({section, options, theme}) => {
         </ContactInformation>
       </Row>
 
-      <BackgroundImage bgImg={section.image.url} />
+      <BackgroundImage bgImg={section.image.url} theme={theme}/>
     </AboutSection>
   )
 }

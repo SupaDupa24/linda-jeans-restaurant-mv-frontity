@@ -64,7 +64,7 @@ const ImageCollage = styled.div`
   padding-bottom: 50%;
    
   ${props => props.theme.breakPoints.mobile} {
-    padding-bottom: 150%;
+    padding-bottom: 250%;
   }
 
   > div > div {

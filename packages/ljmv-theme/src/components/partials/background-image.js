@@ -1,9 +1,9 @@
 import React from 'react'
 import {styled} from 'frontity'
 
-const BackgroundImage = ({bgImg}) => {
+const BackgroundImage = ({bgImg, theme}) => {
   return (
-    <BackgroundImageDiv bgImg={bgImg} />
+    <BackgroundImageDiv theme={theme} bgImg={bgImg} />
   )
 }
 
@@ -16,4 +16,8 @@ const BackgroundImageDiv = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  ${props => props.theme.breakPoints.mobile} {
+    padding-bottom: 70%;
+  }
 `

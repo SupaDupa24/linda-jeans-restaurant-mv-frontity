@@ -25,7 +25,7 @@ const AboutUs = ({state, theme, libraries}) => {
         <Image src={post.acf.our_story.signature.url} />
       </AboutUsSection>
 
-      <BackgroundImage bgImg={post.acf.our_story.image.url} />
+      <BackgroundImage bgImg={post.acf.our_story.image.url} theme={theme} />
 
       <AboutUsSection>
         <hr />
@@ -37,7 +37,7 @@ const AboutUs = ({state, theme, libraries}) => {
         <Button href={post.acf.our_team.link.url} buttonStyle={'primary'} theme={theme}>{post.acf.our_team.link.title}</Button>
       </AboutUsSection>
 
-      <BackgroundImage bgImg={post.acf.our_team.image.url} />
+      <BackgroundImage bgImg={post.acf.our_team.image.url} theme={theme} />
     </AboutPage>
   )
 }
