@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect, styled, css} from 'frontity'
+import {connect, styled} from 'frontity'
 
 const Button = ({href, actions, children, external, buttonStyle, theme}) => {
   const onClickHandler = e => {
@@ -8,7 +8,7 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
       actions.router.set(href)
     }
   }
-  console.log(buttonStyle)
+  
   switch(buttonStyle) {
     case 'lightOutline':
       return(
