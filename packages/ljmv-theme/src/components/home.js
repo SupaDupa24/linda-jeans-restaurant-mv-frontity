@@ -100,7 +100,7 @@ const Home = ({state, theme, actions}) => {
   }
 
   return (
-    <>
+    <div css={css`position: relative`}>
       <Header theme={theme} selectedTheme={post.acf.navigation_bar_theme} />
       
       <SiteContent>
@@ -147,7 +147,7 @@ const Home = ({state, theme, actions}) => {
             <p>{options.acf.hours}</p>
           </div>
         </Modal>
-    </>
+    </div>
   )
 }
 

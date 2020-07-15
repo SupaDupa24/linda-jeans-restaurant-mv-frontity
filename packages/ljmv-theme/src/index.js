@@ -20,7 +20,9 @@ export default {
     theme: Root
   },
   state: {
-    theme: {}
+    theme: {
+      showNotification: true
+    }
   },
   actions: {
     theme: {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'frontity'
+import {connect, css} from 'frontity'
 import Switch from '@frontity/components/switch'
 
 import SiteContent from './global/site-content'
@@ -14,7 +14,7 @@ const Post = ({state, theme}) => {
   const post = state.source[data.type][data.id]
 
   return (
-    <>
+    <div css={css`position: relative`}>
       <Header theme={theme} selectedTheme={post.acf.navigation_bar_theme} />
 
       <SiteContent>
@@ -24,7 +24,7 @@ const Post = ({state, theme}) => {
           <ContactUs when={post.template == 'contact.php'} theme={theme} />
         </Switch>
       </SiteContent>
-    </>
+    </div>
   )
 }
 

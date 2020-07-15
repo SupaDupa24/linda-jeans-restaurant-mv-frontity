@@ -4,6 +4,7 @@ import Switch from '@frontity/components/switch'
 
 import Color from 'color'
 
+import NotificationBar from './global/notification-bar'
 import Footer from './global/footer'
 
 import Loading from './loading'
@@ -12,7 +13,6 @@ import Post from './post'
 import PageError from './page-error'
 
 import Trebuchet from '../fonts/trebuc.ttf'
-// import TrebuchetItalic from '../fonts/Trebuchet-MS-Italic.ttf'  TODO Is this necessary?
 
 const Root = ({state}) => {
   const data = state.source.get(state.router.link)
@@ -151,6 +151,7 @@ const Root = ({state}) => {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
+            position: relative;
           }
 
           h2 {
@@ -214,6 +215,8 @@ const Root = ({state}) => {
           }
         `}
       />
+
+      <NotificationBar theme={theme} />
 
       <Switch>
         <Loading when={data.isFetching} theme={theme} />
