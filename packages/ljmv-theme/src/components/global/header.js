@@ -44,7 +44,8 @@ const Header = ({state, theme, selectedTheme}) => {
     },
     bmCrossButton: {
       height: '24px',
-      width: '24px'
+      width: '24px',
+      right: '1.625rem'
     },
     bmCross: {
       background: theme.colors.light
@@ -80,7 +81,7 @@ const Header = ({state, theme, selectedTheme}) => {
         </DesktopNavigation>
 
         <MobileNavigation theme={theme}>
-          <Menu isOpen={false} right styles={menuStyles} isOpen={false}>
+          <Menu isOpen={false} right styles={menuStyles} isOpen={false} width={'90%'}>
             <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
           </Menu>
         </MobileNavigation>
