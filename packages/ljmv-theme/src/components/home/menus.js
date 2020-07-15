@@ -7,6 +7,8 @@ const Menus = ({section, theme}) => {
   return (
     <MenusSection>
       <MenusTitleText>
+        <hr />
+
         <h2>{section.title}</h2>
 
         <p>{section.text}</p>
@@ -40,13 +42,17 @@ const MenusTitleText = styled.div`
   text-align: center;
   padding: 0 1rem;
 
-  h2:after {
-    margin-left: auto;
-    margin-right: auto;
+  h2 {
+    margin-top: 2rem;
+    
+    &:after {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   p {
-    margin-bottom: 1rem;
+    margin: 2rem 0;
   }
 `
 
