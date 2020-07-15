@@ -136,6 +136,10 @@ const Root = ({state}) => {
             box-sizing: border-box;
           }
 
+          body {
+            font-size: 18px;
+          }
+
           ol, li {
             margin-left: 2rem;
           }
