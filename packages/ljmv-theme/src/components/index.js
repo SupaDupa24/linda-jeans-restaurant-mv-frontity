@@ -140,7 +140,11 @@ const Root = ({state}) => {
             font-size: 18px;
           }
 
-          ol, li {
+          p, ol, ul {
+            margin-bottom: 1.5rem;
+          }
+
+          ol, ul {
             margin-left: 2rem;
           }
 
