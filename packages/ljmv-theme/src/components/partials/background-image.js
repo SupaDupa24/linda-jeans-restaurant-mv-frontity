@@ -10,7 +10,7 @@ const BackgroundImage = ({bgImg}) => {
 export default BackgroundImage
 
 const BackgroundImageDiv = styled.div`
-  padding-bottom: 40%;
+  padding-bottom: 56.25%;
   background-image: url(${props => props.bgImg});
   background-size: 100%;
   background-size: cover;
