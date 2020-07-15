@@ -91,7 +91,7 @@ const Menus = ({state, libraries, theme}) => {
 export default connect(Menus)
 
 const ContentSection = styled.div`
-  padding: 3rem 0;
+  padding: 3rem 0 0;
 
   display: flex;
   flex-direction: column;
@@ -130,7 +130,7 @@ const EmbedSection = styled.div`
   max-width: 960px;
   margin: 0 auto;
 
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 1rem;
 
   ${props => props.theme.breakPoints.mobile} {
     padding: 1rem 1rem 0;
@@ -141,7 +141,7 @@ const MenuButtonSection = styled.div`
   max-width: 960px;
   margin: 0 auto;
 
-  padding: 3rem 1rem;
+  padding: 0 1rem 3rem;
   display: flex;
   justify-content: space-between;
 
@@ -169,16 +169,16 @@ const MenuNavLink = styled.button`
 const StyledEmbed = styled.div`
   padding: 8px;
   border: 2px ${props => props.theme.colors.primary} solid;
-  height: 70%;
-  height: 70vh;
+  height: 90%;
+  height: 90vh;
   position: relative;
-  margin: 3rem 10px;
+  margin: 0 10px 3rem;
   overflow: hidden;
 
   ${props => props.theme.breakPoints.mobile} {
     margin: 1rem 10px;
-    height: 60%;
-    height: 60vh;
+    height: 65%;
+    height: 65vh;
   }
 
   > div {
