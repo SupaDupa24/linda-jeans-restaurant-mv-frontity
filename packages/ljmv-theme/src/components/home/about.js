@@ -65,6 +65,17 @@ const AboutTitleText = styled.div`
   ${props => props.theme.breakPoints.tablet} {
     width: 100%;
   }
+  
+  ${props => props.theme.breakPoints.mobile} {
+    text-align: center;
+    
+    h2 { 
+      &:after {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
 `
 
 const ContactInformation = styled.div`
