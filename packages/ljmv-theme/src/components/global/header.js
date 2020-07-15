@@ -12,8 +12,8 @@ const NavigationLinks = ({socialMedia, theme, selectedTheme}) => (
   <StyledNav theme={theme}>
     <NavLink href="/" theme={theme} selectedTheme={selectedTheme}>Welcome</NavLink>
     <NavLink href="/menus/" theme={theme} selectedTheme={selectedTheme}>Menus</NavLink>
-    <NavLink href="/about-us/" theme={theme} selectedTheme={selectedTheme}>About Us</NavLink>
-    <NavLink href="/contact-us/" theme={theme} selectedTheme={selectedTheme}>Contact Us</NavLink>
+    <NavLink href="/about-us/" theme={theme} selectedTheme={selectedTheme}>About</NavLink>
+    <NavLink href="/contact-us/" theme={theme} selectedTheme={selectedTheme}>Contact</NavLink>
 
     <SocialMediaLinks theme={theme}>
       {Object.keys(socialMedia).map((keyName, keyIndex) => 
@@ -75,7 +75,7 @@ const Header = ({state, theme, selectedTheme}) => {
   return (
     <StyledHeader theme={theme}>
       <StyledContainer>
-        <NavBarContainer>
+        <NavBarContainer theme={theme}>
           <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
 
           <DesktopNavigation theme={theme}>
@@ -110,8 +110,12 @@ const NavBarContainer = styled.div`
   padding: 1rem 0;
 
   img {
-    max-height: 3rem;
+    max-height: 5.5rem;
     padding: 0 1rem;
+
+    ${props => props.theme.breakPoints.mobile} {
+      max-height: 4rem;
+    }
   }
 `
 
