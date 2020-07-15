@@ -49,7 +49,7 @@ const HeroContainer = styled.div`
     left: 0;
     right: 0;
     background: transparent;
-    background: rgba(0, 0, 0, 0.33);
+    background: rgba(0, 0, 0, 0.15);
     z-index: -1;
   }
 
