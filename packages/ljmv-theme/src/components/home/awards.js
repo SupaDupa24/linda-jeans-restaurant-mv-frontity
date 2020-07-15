@@ -47,21 +47,19 @@ const AwardsTitle = styled.h2`
 const AwardsContainer = styled.div`
   display: flex;
   align-items: center;
-  margin: 1rem auto;
+  margin: 2rem auto;
   width: 100%;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 `
 
 const Award = styled.a`
   display: block;
-  width: 20%;
-  margin: 1rem;
+  width: calc(25% - 3rem);
   position: relative;
 
   ${props => props.theme.breakPoints.mobile} {
-    width: 33%;
-    margin: 0;
+    width: calc(50% - 1.5rem);
   }
 
   padding: 1rem;
@@ -77,12 +75,17 @@ const Award = styled.a`
 
   img {
     display: block;
-    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
-    max-height: 5rem;
+    height: auto;
 
     filter: grayscale(100%);
     opacity: 0.6;
+
+    ${props => props.theme.breakPoints.tablet} {
+      opacity: 1.0;
+      filter: none;
+    }
   }
 
   div {
