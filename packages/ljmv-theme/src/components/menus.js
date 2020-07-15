@@ -10,7 +10,7 @@ const MenuItem = ({menuItem}) => {
     <StyledMenuItem>
       <h3>{menuItem.name}</h3>
       <p>{menuItem.description}</p>
-      <Price>{menuItem.price}</Price>
+      {menuItem.price && <Price>{menuItem.price}</Price>}
     </StyledMenuItem>
   )
 }
