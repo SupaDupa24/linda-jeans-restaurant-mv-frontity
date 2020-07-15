@@ -6,6 +6,7 @@ import { slide as Menu } from 'react-burger-menu'
 import Link from '../partials/link'
 import NavLink from './nav-link'
 import SocialLink from './social-link'
+import Container from '../partials/container'
 
 const NavigationLinks = ({socialMedia, theme, selectedTheme}) => (
   <StyledNav theme={theme}>
@@ -73,19 +74,21 @@ const Header = ({state, theme, selectedTheme}) => {
 
   return (
     <StyledHeader theme={theme}>
-      <div>
-        <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
+      <StyledContainer>
+        <NavBarContainer>
+          <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
 
-        <DesktopNavigation theme={theme}>
-          <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme={selectedTheme} />
-        </DesktopNavigation>
+          <DesktopNavigation theme={theme}>
+            <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme={selectedTheme} />
+          </DesktopNavigation>
 
-        <MobileNavigation theme={theme}>
-          <Menu isOpen={false} right styles={menuStyles} isOpen={false} width={'90%'}>
-            <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
-          </Menu>
-        </MobileNavigation>
-      </div>
+          <MobileNavigation theme={theme}>
+            <Menu isOpen={false} right styles={menuStyles} isOpen={false} width={'90%'}>
+              <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
+            </Menu>
+          </MobileNavigation>
+        </NavBarContainer>
+      </StyledContainer>
     </StyledHeader>
   )
 }
@@ -98,20 +101,22 @@ const StyledHeader = styled.header`
   left: 0;
   right: 0;
   z-index: 1000;
+`
 
-  > div {
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
+const NavBarContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 
-    img {
-      max-height: 3rem;
-      padding: 0 1rem;
-    }
+  img {
+    max-height: 3rem;
+    padding: 0 1rem;
   }
+`
+
+const StyledContainer = styled(Container)`
+  padding: 0;
 `
 
 const MobileNavigation = styled.div`
