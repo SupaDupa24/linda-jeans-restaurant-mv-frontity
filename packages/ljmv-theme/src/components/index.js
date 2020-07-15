@@ -136,6 +136,10 @@ const Root = ({state}) => {
             box-sizing: border-box;
           }
 
+          ol, li {
+            margin-left: 2rem;
+          }
+
           @font-face {
             font-family: Trebuchet;
             src: url(${Trebuchet});
