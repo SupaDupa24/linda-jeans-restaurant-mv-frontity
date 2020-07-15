@@ -3,11 +3,15 @@ import {styled} from 'frontity'
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
+import SiteContent from './global/site-content'
+
 const Loading = ({theme}) => {
   return (
-    <LoadingPage>
-      <Loader type="ThreeDots" color={theme.colors.primary} height={80} width={80} />
-    </LoadingPage>
+    <SiteContent>
+      <LoadingPage>
+        <Loader type="ThreeDots" color={theme.colors.primary} height={80} width={80} />
+      </LoadingPage>
+    </SiteContent>
   )
 }
 
