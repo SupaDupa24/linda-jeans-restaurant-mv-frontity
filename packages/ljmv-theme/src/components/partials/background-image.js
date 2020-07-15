@@ -18,6 +18,6 @@ const BackgroundImageDiv = styled.div`
   background-position: center;
 
   ${props => props.theme.breakPoints.mobile} {
-    padding-bottom: 70%;
+    padding-bottom: 85%;
   }
 `
