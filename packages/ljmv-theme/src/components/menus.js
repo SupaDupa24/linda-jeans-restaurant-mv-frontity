@@ -176,7 +176,7 @@ const StyledEmbed = styled.div`
   overflow: hidden;
 
   ${props => props.theme.breakPoints.mobile} {
-    margin: 1rem 10px;
+    margin: 1rem -10px;
     height: 65%;
     height: 65vh;
   }

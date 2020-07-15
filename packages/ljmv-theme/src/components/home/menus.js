@@ -36,7 +36,7 @@ const Menus = ({section, theme}) => {
 export default Menus
 
 const MenusSection = styled.div`
-  margin: 3rem auto 1rem;
+  margin: 5rem auto 1rem;
 `
 
 const MenusTitleText = styled.div`
@@ -54,6 +54,10 @@ const MenusTitleText = styled.div`
 
   p {
     margin: 2rem 0;
+  }
+
+  a {
+    margin-bottom: 3rem;
   }
 `
 

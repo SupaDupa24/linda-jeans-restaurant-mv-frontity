@@ -54,7 +54,7 @@ const AboutSection = styled.div`
 const Row = styled.div`
   display: flex;
   max-width: 960px;
-  margin: 2rem auto;
+  margin: 2rem auto 3rem;
   padding: 1rem 0;
   justify-content: space-between;
 `
@@ -68,7 +68,7 @@ const AboutTitleText = styled.div`
   
   ${props => props.theme.breakPoints.mobile} {
     text-align: center;
-    
+
     h2 { 
       &:after {
         margin-left: auto;
