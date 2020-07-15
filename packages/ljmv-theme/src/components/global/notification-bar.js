@@ -36,6 +36,11 @@ const StyledNotificationBar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    a {
+      color: ${props => props.theme.colors.light};
+      text-decoration: underline;
+    }
   }
 `
 
