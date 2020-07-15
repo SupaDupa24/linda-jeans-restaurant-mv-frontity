@@ -157,6 +157,7 @@ const Root = ({state}) => {
             display: inline-block;
             text-transform: uppercase;
             margin-bottom: 1rem;
+            font-size: 2rem;
 
             &:after {
               content: "";
