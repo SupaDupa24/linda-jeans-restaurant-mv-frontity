@@ -8,6 +8,7 @@ const Button = ({href, actions, children, external, buttonStyle, theme}) => {
       actions.router.set(href)
     }
   }
+  console.log(buttonStyle)
   switch(buttonStyle) {
     case 'lightOutline':
       return(
