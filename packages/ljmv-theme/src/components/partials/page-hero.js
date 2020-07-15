@@ -47,7 +47,7 @@ const PageHeroContainer = styled.div`
     text-transform: uppercase;
     color: ${props => props.theme.colors.light};
     font-weight: bold;
-    font-size: 9rem;
+    font-size: 7rem;
 
     ${props => props.theme.breakPoints.tablet} {
       font-size: 6rem;
