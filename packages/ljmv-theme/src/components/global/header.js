@@ -133,6 +133,7 @@ const MobileNavigation = styled.div`
     right: 0;
     width: 36px;
     height: 36px;
+    font-size: 2rem;
   }
 `
 
