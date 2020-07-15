@@ -10,11 +10,10 @@ const NotificationBar = ({state, theme}) => {
 
   const closeNotification = () => {
     state.theme.showNotification = false
-    console.log(state)
   }
 
   return(
-    <StyledNotificationBar theme={theme} display={showNotification && notification_bar.length > 0}>
+    <StyledNotificationBar theme={theme} display={showNotification && notification_bar.length}>
       <Container>
         <span dangerouslySetInnerHTML={{__html: notification_bar }} />
 
