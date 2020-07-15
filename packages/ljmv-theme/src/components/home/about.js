@@ -14,7 +14,7 @@ const About = ({section, options, theme}) => {
 
           <p>{section.text}</p>
 
-          <Link href={section.link.url}>{section.link.title}</Link>
+          <StyledLink theme={theme} href={section.link.url}>{section.link.title}</StyledLink>
         </AboutTitleText>
 
         <ContactInformation theme={theme}>
@@ -33,7 +33,7 @@ const About = ({section, options, theme}) => {
           {options.acf.address.state}</address>
 
           <h3>Email</h3>
-
+        
           <a href={`mailto:${options.acf.email_address}`} target="_blank" rel="noopener noreferrer">{options.acf.email_address}</a>
         </ContactInformation>
       </Row>
@@ -53,11 +53,11 @@ const Row = styled.div`
   max-width: 960px;
   margin: 2rem auto;
   padding: 1rem;
+  justify-content: space-between;
 `
 
 const AboutTitleText = styled.div`
-  width: 67%;
-  padding-right: 0.5rem;
+  width: calc(66.67% - 5rem);
 
   ${props => props.theme.breakPoints.tablet} {
     width: 100%;
@@ -65,19 +65,28 @@ const AboutTitleText = styled.div`
 `
 
 const ContactInformation = styled.div`
-  width: 33%;
-  padding-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
 
   h3 + * {
     margin-bottom: 1rem;
-    display: block;
   }
 
   address {
     font-style: normal;
   }
 
+  a {
+    display: inline-block;
+  }
+
   ${props => props.theme.breakPoints.tablet} {
     display: none;
   }
+`
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+  margin-top: 2rem;
+  border-bottom: 1px solid ${props => props.theme.colors.secondary};
 `
