@@ -18,7 +18,7 @@ const Footer = ({state, theme}) => {
           <div>
             <h2>Let's Connect</h2>
 
-            <SocialLinkContainer>
+            <SocialLinkContainer theme={theme}>
               {Object.keys(options.acf.social_media).map((keyName, keyIndex) => 
                 <SocialLink key={keyIndex} network={keyName} href={options.acf.social_media[keyName]} theme={theme} selectedTheme='light'>{keyName.replace(/_/g, ' ')}</SocialLink>
               )}
@@ -190,16 +190,35 @@ const Row = styled.div`
 `
 
 const SocialLinkContainer = styled.div`
+  ${props => props.theme.breakPoints.mobile} {
+    margin: 2rem 0;
+  }
+
   div {
     display: inline-block;
+
+    a {
+      ${props => props.theme.breakPoints.mobile} {
+        padding: 1.25rem;
+      }
+    }
 
     &:nth-of-type(1) a {
       padding-left: 0;
     }
 
+    &:last-of-type a {
+      padding-right: 0;
+    }
+
     a:before {
       height: 1.5rem;
       width: 1.5rem;
+
+      ${props => props.theme.breakPoints.mobile} {
+        height: 2rem;
+        width: 2rem;
+      }
     }
   }
 `
