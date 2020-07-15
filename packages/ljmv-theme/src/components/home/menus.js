@@ -2,19 +2,22 @@ import React from 'react'
 import {styled} from 'frontity'
 
 import Button from '../partials/button'
+import Container from '../partials/container'
 
 const Menus = ({section, theme}) => {
   return (
     <MenusSection>
-      <MenusTitleText>
-        <hr />
+      <Container>
+        <MenusTitleText>
+          <hr />
 
-        <h2>{section.title}</h2>
+          <h2>{section.title}</h2>
 
-        <p>{section.text}</p>
+          <p>{section.text}</p>
 
-        <Button href={section.link.url} buttonStyle={'primary'} theme={theme}>{section.link.title}</Button>
-      </MenusTitleText>
+          <Button href={section.link.url} buttonStyle={'primary'} theme={theme}>{section.link.title}</Button>
+        </MenusTitleText>
+      </Container>
 
       <ImageCollage theme={theme}>
         <BigImage theme={theme}>
@@ -37,10 +40,8 @@ const MenusSection = styled.div`
 `
 
 const MenusTitleText = styled.div`
-  max-width: 960px;
   margin: 0 auto 2rem;
   text-align: center;
-  padding: 0 1rem;
 
   h2 {
     margin-top: 2rem;

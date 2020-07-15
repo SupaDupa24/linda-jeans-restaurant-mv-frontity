@@ -4,6 +4,7 @@ import Switch from '@frontity/components/switch'
 
 import PageHero from './partials/page-hero'
 import Button from './partials/button'
+import Container from './partials/container'
 
 const MenuItem = ({menuItem}) => {
   return (
@@ -62,25 +63,27 @@ const Menus = ({state, libraries, theme}) => {
     <>
       <PageHero hero={{title: post.title.rendered, img: state.source.attachment[post.featured_media].source_url}} theme={theme} />
 
-      <ContentSection theme={theme}>
-        <hr />
+      <Container>
+        <ContentSection theme={theme}>
+          <hr />
 
-        <MenuNavigation menus={post.acf.menus} selectMenu={selectMenu} theme={theme}/>
+          <MenuNavigation menus={post.acf.menus} selectMenu={selectMenu} theme={theme}/>
 
-        <Html2React html={post.content.rendered} />
-      </ContentSection>
+          <Html2React html={post.content.rendered} />
+        </ContentSection>
 
-      <EmbedSection theme={theme}>
-        <EmbeddedMenu menu={selectedMenu} theme={theme} />
+        <EmbedSection theme={theme}>
+          <EmbeddedMenu menu={selectedMenu} theme={theme} />
 
-        <hr />
-      </EmbedSection>
+          <hr />
+        </EmbedSection>
 
-      <MenuButtonSection theme={theme}>
-        <Button theme={theme} buttonStyle='primary' href={options.acf.online_ordering_link.url} external={true}>Order Here</Button>
+        <MenuButtonSection theme={theme}>
+          <Button theme={theme} buttonStyle='primary' href={options.acf.online_ordering_link.url} external={true}>Order Here</Button>
 
-        {selectedMenu.pdf && <Button theme={theme} buttonStyle='secondary' href={selectedMenu.pdf.url} external={true}>PDF Menu</Button>}
-      </MenuButtonSection>
+          {selectedMenu.pdf && <Button theme={theme} buttonStyle='secondary' href={selectedMenu.pdf.url} external={true}>PDF Menu</Button>}
+        </MenuButtonSection>
+      </Container>
     </>
   )
 }
@@ -88,10 +91,7 @@ const Menus = ({state, libraries, theme}) => {
 export default connect(Menus)
 
 const ContentSection = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-
-  padding: 3rem 1rem;
+  padding: 3rem 0;
 
   display: flex;
   flex-direction: column;

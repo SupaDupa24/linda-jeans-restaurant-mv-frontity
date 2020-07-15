@@ -4,39 +4,42 @@ import {styled} from 'frontity'
 import BackgroundImage from '../partials/background-image'
 
 import Link from '../partials/link'
+import Container from '../partials/container'
 
 const About = ({section, options, theme}) => {
   return (
     <AboutSection>
-      <Row>
-        <AboutTitleText theme={theme}>
-          <h2>{section.title}</h2>
+      <Container>
+        <Row>
+          <AboutTitleText theme={theme}>
+            <h2>{section.title}</h2>
 
-          <p>{section.text}</p>
+            <p>{section.text}</p>
 
-          <StyledLink theme={theme} href={section.link.url}>{section.link.title}</StyledLink>
-        </AboutTitleText>
+            <StyledLink theme={theme} href={section.link.url}>{section.link.title}</StyledLink>
+          </AboutTitleText>
 
-        <ContactInformation theme={theme}>
-          <h3>Phone</h3>
+          <ContactInformation theme={theme}>
+            <h3>Phone</h3>
 
-          <a href={`tel:${options.acf.phone_number.replace(/\D/g,'')}`}>{options.acf.phone_number}</a>
+            <a href={`tel:${options.acf.phone_number.replace(/\D/g,'')}`}>{options.acf.phone_number}</a>
 
-          <h3>Hours</h3>
+            <h3>Hours</h3>
 
-          <p>{options.acf.hours}</p>
+            <p>{options.acf.hours}</p>
 
-          <h3>Location</h3>
+            <h3>Location</h3>
 
-          <address>{options.acf.address.street_number} {options.acf.address.street_name}<br />
-          {options.acf.address.city}<br />
-          {options.acf.address.state}</address>
+            <address>{options.acf.address.street_number} {options.acf.address.street_name}<br />
+            {options.acf.address.city}<br />
+            {options.acf.address.state}</address>
 
-          <h3>Email</h3>
-        
-          <a href={`mailto:${options.acf.email_address}`} target="_blank" rel="noopener noreferrer">{options.acf.email_address}</a>
-        </ContactInformation>
-      </Row>
+            <h3>Email</h3>
+          
+            <a href={`mailto:${options.acf.email_address}`} target="_blank" rel="noopener noreferrer">{options.acf.email_address}</a>
+          </ContactInformation>
+        </Row>
+      </Container>
 
       <BackgroundImage bgImg={section.image.url} theme={theme}/>
     </AboutSection>
@@ -52,7 +55,7 @@ const Row = styled.div`
   display: flex;
   max-width: 960px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1rem 0;
   justify-content: space-between;
 `
 

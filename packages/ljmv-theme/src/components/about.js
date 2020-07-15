@@ -5,6 +5,7 @@ import Image from '@frontity/components/image'
 import PageHero from './partials/page-hero'
 import BackgroundImage from './partials/background-image'
 import Button from './partials/button'
+import Container from './partials/container'
 
 const AboutUs = ({state, theme, libraries}) => {
   const data = state.source.get(state.router.link)
@@ -16,25 +17,29 @@ const AboutUs = ({state, theme, libraries}) => {
       <PageHero hero={{title: post.title.rendered, img: state.source.attachment[post.featured_media].source_url}} theme={theme} />
 
       <AboutUsSection>
-        <hr />
+        <Container>
+          <hr />
 
-        <h2>{post.acf.our_story.title}</h2>
+          <h2>{post.acf.our_story.title}</h2>
 
-        <Html2React html={post.acf.our_story.content} />
+          <Html2React html={post.acf.our_story.content} />
 
-        <Image src={post.acf.our_story.signature.url} />
+          <Image src={post.acf.our_story.signature.url} />
+        </Container>
       </AboutUsSection>
 
       <BackgroundImage bgImg={post.acf.our_story.image.url} theme={theme} />
 
       <AboutUsSection>
-        <hr />
+        <Container>
+          <hr />
 
-        <h2>{post.acf.our_team.title}</h2>
+          <h2>{post.acf.our_team.title}</h2>
 
-        <Html2React html={post.acf.our_team.content} />
+          <Html2React html={post.acf.our_team.content} />
 
-        <Button href={post.acf.our_team.link.url} buttonStyle={'primary'} theme={theme}>{post.acf.our_team.link.title}</Button>
+          <Button href={post.acf.our_team.link.url} buttonStyle={'primary'} theme={theme}>{post.acf.our_team.link.title}</Button>
+        </Container>
       </AboutUsSection>
 
       <BackgroundImage bgImg={post.acf.our_team.image.url} theme={theme} />
@@ -49,10 +54,7 @@ const AboutPage = styled.div`
 `
 
 const AboutUsSection = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-
-  padding: 3rem 1rem;
+  padding: 3rem 0;
 
   text-align: center;
 

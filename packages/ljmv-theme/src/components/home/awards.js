@@ -2,23 +2,27 @@ import React from 'react'
 import {styled} from 'frontity'
 import Image from '@frontity/components/image'
 
+import Container from '../partials/container'
+
 const Awards = ({section, theme}) => {
   return (
     <AwardsSection>
-      <AwardsContainer>
-        {section.awards.map(({logo, link}, index) => {
-          return(
-            <Award key={index.toString()} href={link.url} target="_blank" rel="noopener noreferrer" theme={theme}>
-              <Tooltip theme={theme}>{link.title}</Tooltip>
-              <Image src={logo.url} alt={link.title}/>
-            </Award>
-          )
-        })}
-      </AwardsContainer>
+      <Container>
+        <AwardsContainer>
+          {section.awards.map(({logo, link}, index) => {
+            return(
+              <Award key={index.toString()} href={link.url} target="_blank" rel="noopener noreferrer" theme={theme}>
+                <Tooltip theme={theme}>{link.title}</Tooltip>
+                <Image src={logo.url} alt={link.title}/>
+              </Award>
+            )
+          })}
+        </AwardsContainer>
 
-      <AwardsTitle>{section.text}</AwardsTitle>
+        <AwardsTitle>{section.text}</AwardsTitle>
 
-      <hr />
+        <hr />
+      </Container>
     </AwardsSection>
   )
 }
@@ -26,7 +30,6 @@ const Awards = ({section, theme}) => {
 export default Awards
 
 const AwardsSection = styled.div`
-  max-width: 960px;
   margin: 3rem auto;
 `
 

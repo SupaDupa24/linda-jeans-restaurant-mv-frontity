@@ -2,28 +2,31 @@ import React from 'react'
 import {styled} from 'frontity'
 
 import Button from '../partials/button'
+import Container from '../partials/container'
 
 const Hero = ({hero, options, backgroundImage, theme}) => {
   return (
     <HeroContainer backgroundImage={backgroundImage} theme={theme}>
-      <HeroContent theme={theme}>
-        <h1>{hero.title}</h1>
-        <h2>{hero.subtitle}</h2>
+      <Container>
+        <HeroContent theme={theme}>
+          <h1>{hero.title}</h1>
+          <h2>{hero.subtitle}</h2>
 
-        {hero.buttons.map((button, index) => {
-          const onlineOrdering = button.online_ordering_button
+          {hero.buttons.map((button, index) => {
+            const onlineOrdering = button.online_ordering_button
 
-          if(onlineOrdering) {
-            return(
-              <Button theme={theme} key={index.toString()} buttonStyle={button.style} href={options.acf.online_ordering_link.url} external={true}>{button.title}</Button>
-            )
-          } else {
-            return (
-              <Button theme={theme} key={index.toString()} href={button.link.url} buttonStyle={button.style}>{button.link.title}</Button>
-            )
-          }
-        })}
-      </HeroContent>
+            if(onlineOrdering) {
+              return(
+                <Button theme={theme} key={index.toString()} buttonStyle={button.style} href={options.acf.online_ordering_link.url} external={true}>{button.title}</Button>
+              )
+            } else {
+              return (
+                <Button theme={theme} key={index.toString()} href={button.link.url} buttonStyle={button.style}>{button.link.title}</Button>
+              )
+            }
+          })}
+        </HeroContent>
+      </Container>
     </HeroContainer>
   )
 }
@@ -31,7 +34,7 @@ const Hero = ({hero, options, backgroundImage, theme}) => {
 export default Hero
 
 const HeroContainer = styled.div`
-  padding: 20% 1rem;
+  padding: 20% 0;
   background-image: ${props => `url(${props.backgroundImage})`};
   background-repeat: no-repeat;
   background-size: 100%;
