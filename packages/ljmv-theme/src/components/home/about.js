@@ -1,12 +1,14 @@
 import React from 'react'
-import {styled} from 'frontity'
+import {styled, connect} from 'frontity'
 
 import BackgroundImage from '../partials/background-image'
 
 import Link from '../partials/link'
 import Container from '../partials/container'
 
-const About = ({section, options, theme}) => {
+const About = ({section, options, theme, libraries}) => {
+  const Html2React = libraries.html2react.Component
+
   return (
     <AboutSection>
       <Container>
@@ -14,7 +16,7 @@ const About = ({section, options, theme}) => {
           <AboutTitleText theme={theme}>
             <h2>{section.title}</h2>
 
-            <p>{section.text}</p>
+            <div><Html2React html={section.text} /></div>
 
             <StyledLink theme={theme} href={section.link.url}>{section.link.title}</StyledLink>
           </AboutTitleText>
@@ -46,7 +48,7 @@ const About = ({section, options, theme}) => {
   )
 }
 
-export default About
+export default connect(About)
 
 const AboutSection = styled.div`
 `
