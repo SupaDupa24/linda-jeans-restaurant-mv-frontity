@@ -12,8 +12,12 @@ const NotificationBar = ({state, theme}) => {
     state.theme.showNotification = false
   }
 
+  if(notification_bar.length === 0) {
+    state.theme.showNotification = false
+  }
+
   return(
-    <StyledNotificationBar theme={theme} display={showNotification && notification_bar.length}>
+    <StyledNotificationBar theme={theme} show={showNotification}>
       <Container>
         <span dangerouslySetInnerHTML={{__html: notification_bar }} />
 
@@ -30,7 +34,7 @@ const StyledNotificationBar = styled.div`
   color: ${props => props.theme.colors.light};
   padding: 0.5rem 0;
 
-  display: ${props => props.display ? 'block' : 'none'};
+  display: ${props => props.show ? 'block' : 'none'};
   
   div {
     display: flex;
