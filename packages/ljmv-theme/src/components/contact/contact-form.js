@@ -15,7 +15,7 @@ const ContactForm = ({section, theme, libraries}) => {
     failureCard.current.style.display = 'none'
     submitButton.current.disabled = true
 
-    emailjs.sendForm('gmail', 'template_ngoJCkZ5', e.target, 'user_TsvhWYO3m6S4jMkguVdwD')
+    emailjs.sendForm('gmail', 'template_WVLlczVk', e.target, 'user_gSiDKqlpOdUiCVLVjxOWJ')
       .then((result) => {
         console.log(result.text)
 
