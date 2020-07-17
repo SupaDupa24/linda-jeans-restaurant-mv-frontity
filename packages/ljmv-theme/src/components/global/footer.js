@@ -64,6 +64,7 @@ const StyledFooter = styled.footer`
   background: ${props => props.theme.colors.primary};
   position: relative;
   padding-top: 3rem;
+  overflow: hidden;
 
   color: ${props => props.theme.colors.light};
 
