@@ -2,11 +2,14 @@ import React from 'react'
 import {connect, styled} from 'frontity'
 
 import { slide as Menu } from 'react-burger-menu'
+import ScrollToTop from 'react-scroll-to-top'
 
 import Link from '../partials/link'
 import NavLink from './nav-link'
 import SocialLink from './social-link'
 import Container from '../partials/container'
+
+import scrollToTopIcon from '../../icons/icon-scrolltotop.svg'
 
 const NavigationLinks = ({socialMedia, theme, selectedTheme}) => (
   <StyledNav theme={theme}>
@@ -73,27 +76,42 @@ const Header = ({state, theme, selectedTheme}) => {
   }
 
   return (
-    <StyledHeader theme={theme}>
-      <StyledContainer>
-        <NavBarContainer theme={theme}>
-          <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
+    <>
+      <ScrollToTop smooth component={<ScrollToTopIcon />} style={{backgroundColor: 'transparent', boxShadow: 'none', width: '2rem', height: '2rem'}} />
 
-          <DesktopNavigation theme={theme}>
-            <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme={selectedTheme} />
-          </DesktopNavigation>
+      <StyledHeader theme={theme}>
+        <StyledContainer>
+          <NavBarContainer theme={theme}>
+            <Link href="/">{ logo ? <img src={logo.url} alt={name}/> : <h1 dangerouslySetInnerHTML={{__html:name}} /> }</Link>
 
-          <MobileNavigation theme={theme}>
-            <Menu isOpen={false} right styles={menuStyles} isOpen={false} width={'90%'}>
-              <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
-            </Menu>
-          </MobileNavigation>
-        </NavBarContainer>
-      </StyledContainer>
-    </StyledHeader>
+            <DesktopNavigation theme={theme}>
+              <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme={selectedTheme} />
+            </DesktopNavigation>
+
+            <MobileNavigation theme={theme}>
+              <Menu isOpen={false} right styles={menuStyles} isOpen={false} width={'90%'}>
+                <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
+              </Menu>
+            </MobileNavigation>
+          </NavBarContainer>
+        </StyledContainer>
+      </StyledHeader>
+    </>
   )
 }
 
 export default connect(Header)
+
+const ScrollToTopIcon = styled.div`
+  width: 2rem;
+  padding-bottom: 2rem;
+
+  background-image: url(${scrollToTopIcon});
+  background-repeat: none;
+  background-size: 100%;
+  background-size: contain;
+  background-position: center;
+`
 
 const StyledHeader = styled.header`
   position: absolute;
