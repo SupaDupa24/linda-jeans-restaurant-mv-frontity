@@ -52,7 +52,9 @@ const Header = ({state, theme, selectedTheme}) => {
       right: '1.625rem'
     },
     bmCross: {
-      background: theme.colors.light
+      background: theme.colors.light,
+      height: '24px',
+      width: '4px'
     },
     bmMenuWrap: {
       position: 'fixed',
@@ -60,7 +62,7 @@ const Header = ({state, theme, selectedTheme}) => {
     },
     bmMenu: {
       background: theme.colors.primary,
-      padding: '2.5em 1.5em 0',
+      padding: '1em 0',
       fontSize: '1.15em'
     },
     bmItemList: {
@@ -152,6 +154,10 @@ const MobileNavigation = styled.div`
     width: 36px;
     height: 36px;
     font-size: 2rem;
+    
+    a {
+      display: inline-block;
+    }
   }
 `
 
@@ -165,12 +171,8 @@ const StyledNav = styled.nav`
   display: flex;
 
   ${props => props.theme.breakPoints.navbar} {
-    text-align: right;
+    text-align: center;
     flex-direction: column;
-
-    > div {
-      margin-bottom: 1.5rem;
-    }
   }
 `
 
