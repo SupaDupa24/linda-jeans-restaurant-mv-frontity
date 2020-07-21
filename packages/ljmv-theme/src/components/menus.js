@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {connect, styled, css} from 'frontity'
+import React, {useState, useEffect, useRef} from 'react'
+import {connect, styled} from 'frontity'
 import Switch from '@frontity/components/switch'
 
 import PageHero from './partials/page-hero'
@@ -27,10 +27,16 @@ const SectionTitle = ({sectionTitle}) => {
 }
 
 const EmbeddedMenu = ({menu, theme}) => {
+  const scrollableDiv = useRef(null)
+
+  useEffect(() => {
+    scrollableDiv.current.scrollTo(0,0)
+  })
+
   return (
     <StyledEmbed title={menu.title} theme={theme}>
       <div>
-        <div>
+        <div ref={scrollableDiv}>
           <h2>{menu.title}</h2>
 
           {menu.menu_items.map((menu_item, index) => 
@@ -47,7 +53,7 @@ const EmbeddedMenu = ({menu, theme}) => {
 const MenuNavigation = ({menus, selectMenu, theme}) => {
   return (
     <div>
-      {menus.map((menu, index) => <MenuNavLink theme={theme} key={`${menu.title.replace(/[^a-zA-Z ]/g, '')}-${index}`} onClick={(e) => selectMenu(menu)}>{menu.title}</MenuNavLink>)}
+      {menus.map((menu, index) => <MenuNavLink theme={theme} key={`${menu.title.replace(/[^a-zA-Z ]/g, '')}-${index}`} onClick={() => selectMenu(menu)}>{menu.title}</MenuNavLink>)}
     </div>
   )
 }
