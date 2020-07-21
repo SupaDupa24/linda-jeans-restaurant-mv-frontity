@@ -17,7 +17,7 @@ const TextLink = ({section, libraries, theme}) => {
         </div>
 
         <div>
-          <Button href={section.link.url} buttonStyle={'primary'} theme={theme}>{section.link.title}</Button>
+          <Button href={section.link.url} external={true} buttonStyle={'primary'} theme={theme}>{section.link.title}</Button>
         </div>
       </Row>
         
