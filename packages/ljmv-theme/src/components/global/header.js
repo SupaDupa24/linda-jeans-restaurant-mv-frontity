@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect, styled} from 'frontity'
 
 import { slide as Menu } from 'react-burger-menu'
 import ScrollToTop from 'react-scroll-to-top'
+import disableScroll from 'disable-scroll'
 
 import Link from '../partials/link'
 import NavLink from './nav-link'
@@ -30,6 +31,7 @@ const Header = ({state, theme, selectedTheme}) => {
   const options = state.source.get('acf-options-page')
   const lightLogo = selectedTheme === 'light' ? true : false
   const logo = lightLogo ? options.acf.logos.light : options.acf.logos.dark
+  const [isMenuOpen, toggleMenu] = useState(false)
 
   const {name} = (state.source.get('nameAndDescription'))
 
@@ -77,6 +79,20 @@ const Header = ({state, theme, selectedTheme}) => {
     }
   }
 
+  useEffect(() => {
+    disableScroll.off()
+  }, [])
+
+  const handleOnOpen = () => {
+    disableScroll.on()
+    toggleMenu(true)
+  }
+
+  const handleOnClose = () => {
+    disableScroll.off()
+    toggleMenu(false)
+  }
+
   return (
     <>
       <ScrollToTop smooth component={<ScrollToTopIcon />} style={{backgroundColor: 'transparent', boxShadow: 'none', width: '2rem', height: '2rem'}} />
@@ -91,7 +107,7 @@ const Header = ({state, theme, selectedTheme}) => {
             </DesktopNavigation>
 
             <MobileNavigation theme={theme}>
-              <Menu isOpen={false} right styles={menuStyles} isOpen={false} width={'90%'}>
+              <Menu isOpen={isMenuOpen} right styles={menuStyles} width={'90%'} onOpen={handleOnOpen} onClose={handleOnClose}>
                 <NavigationLinks socialMedia={options.acf.social_media} theme={theme} selectedTheme='light' />
               </Menu>
             </MobileNavigation>
