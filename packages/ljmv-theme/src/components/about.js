@@ -38,7 +38,7 @@ const AboutUs = ({state, theme, libraries}) => {
 
           <Html2React html={post.acf.our_team.content} />
 
-          <Button href={post.acf.our_team.link.url} buttonStyle={'primary'} theme={theme}>{post.acf.our_team.link.title}</Button>
+          <Button external={true} href={post.acf.our_team.link.url} buttonStyle={'primary'} theme={theme}>{post.acf.our_team.link.title}</Button>
         </Container>
       </AboutUsSection>
 
