@@ -23,6 +23,6 @@
     "ljmv-theme": "file:packages/ljmv-theme"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   }
 }
