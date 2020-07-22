@@ -2,7 +2,7 @@ const settings = {
   "name": "ljmv-frontity",
   "state": {
     "frontity": {
-      "url": "https://ljmv.artlyticalmedia.com",
+      "url": "https://wpadmin.lindajeansrestaurantmv.com",
       "title": "Linda Jean's Restaurant Martha's Vineyard",
       "description": "WordPress installation for Frontity development"
     }
@@ -15,7 +15,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          api: "https://ljmv.artlyticalmedia.com/wp-json/",
+          api: "https://wpadmin.lindajeansrestaurantmv.com/index.php/wp-json/",
           homepage: "/home"
         }
       }
