@@ -164,6 +164,7 @@ const Root = ({state}) => {
             min-height: 100vh;
             flex-direction: column;
             position: relative;
+            overflow: hidden;
           }
 
           h2 {
