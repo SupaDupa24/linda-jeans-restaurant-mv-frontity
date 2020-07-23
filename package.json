@@ -20,7 +20,8 @@
     "@frontity/wp-source": "^1.8.0",
     "dotenv-flow": "^3.2.0",
     "frontity": "^1.9.0",
-    "ljmv-theme": "file:packages/ljmv-theme"
+    "ljmv-theme": "file:packages/ljmv-theme",
+    "react-mailchimp-subscribe": "^2.1.0"
   },
   "engines": {
     "node": "12.x"

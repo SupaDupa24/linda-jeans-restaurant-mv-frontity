@@ -1,8 +1,35 @@
 import React from 'react'
 import {connect, styled} from 'frontity'
 
+import MailchimpSubscribe from "react-mailchimp-subscribe"
+
 import Link from '../partials/link'
 import SocialLink from './social-link'
+
+const SubscriptionForm = ({theme, status, message, onValidated}) => {
+  let email
+
+  const submit = () =>
+    email &&
+    email.value.indexOf("@") > -1 &&
+    onValidated({
+      EMAIL: email.value
+    })
+
+  return (
+    <FormGroup theme={theme}>
+      <input type="email" placeholder="Email" ref={node => (email = node)} />
+      
+      <button onClick={submit}>Sign up</button>
+
+      {status === "sending" && <SendingCard theme={theme}>Sending...</SendingCard>}
+
+      {status === "error" && <ErrorCard theme={theme} dangerouslySetInnerHTML={{__html: message}}/>}
+
+      {status === "success" && <SuccessCard theme={theme}>You've been subscribed!</SuccessCard>}
+    </FormGroup>
+  )
+}
 
 const Footer = ({state, theme}) => {
   const options = state.source.get('acf-options-page')
@@ -10,10 +37,11 @@ const Footer = ({state, theme}) => {
 
   const {name} = (state.source.get('nameAndDescription'))
 
+  const url = "//lindajeansrestaurantmv.us17.list-manage.com/subscribe/post?u=79e568a05bc6f668789b780b7&amp;id=7cfff080c5"
+
   return (
     <StyledFooter theme={theme}>
       <div>
-
         <Row theme={theme}>
           <div>
             <h2>Let's Connect</h2>
@@ -36,7 +64,19 @@ const Footer = ({state, theme}) => {
               <h2>Stay In Touch</h2>
             </div>
 
-            <input type="text" placeholder="Email" /><button>Sign up</button>
+            {/* <input type="text" placeholder="Email" /><button>Sign up</button> */}
+            
+            <MailchimpSubscribe
+              url={url}
+              render={({subscribe, status, message}) => (
+                <SubscriptionForm
+                  theme={theme}
+                  status={status}
+                  message={message}
+                  onValidated={formData => subscribe(formData)}
+                />
+              )}
+            />
           </div>
         </Row>
 
@@ -122,40 +162,6 @@ const Row = styled.div`
 
         ${props => props.theme.breakPoints.tablet} {
           margin-right: auto;
-        }
-      }
-
-      input {
-        outline: none;
-        border: 1px solid ${props => props.theme.colors.light};
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.375rem;
-        font-size: 0.75rem;
-
-        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-          color: ${props => props.theme.colors.light};
-        }
-
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-          color: ${props => props.theme.colors.light};
-        }
-
-        ::-ms-input-placeholder {
-          color: ${props => props.theme.colors.light};
-        }
-      }
-
-      button {
-        font-size: 0.75rem;
-        padding: 0.375rem;
-        border: 1px solid ${props => props.theme.colors.light};
-        text-transform: uppercase;
-        vertical-align: bottom;
-
-        transition: all 0.125s ease-in-out;
-
-        &:hover {
-          color: ${props => props.theme.colors.light};
         }
       }
     }
@@ -270,5 +276,88 @@ const FinePrint = styled.div`
         color: ${props => props.theme.colors.light};
       }
     }
+  }
+`
+
+const FormGroup = styled.div`
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: end;
+
+  ${props => props.theme.breakPoints.mobile} {
+    justify-content: center;
+  }
+
+  input {
+    outline: none;
+    border: 1px solid ${props => props.theme.colors.light};
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    font-size: 1rem;
+    line-height: 1;
+    color: ${props => props.theme.colors.light};
+    height: 3rem;
+    width: 12rem;
+
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: ${props => props.theme.colors.light};
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: ${props => props.theme.colors.light};
+    }
+
+    ::-ms-input-placeholder {
+      color: ${props => props.theme.colors.light};
+    }
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid ${props => props.theme.colors.light};
+    text-transform: uppercase;
+    vertical-align: bottom;
+    line-height: 1;
+    letter-spacing: 1px;
+    height: 3rem;
+    border-left: none;
+
+    transition: all 0.125s ease-in-out;
+
+    cursor: pointer;
+
+    &:hover {
+      color: ${props => props.theme.colors.light};
+    }
+  }
+`
+
+const SendingCard = styled.div`
+  ${props => props.theme.cards.base}
+
+  margin-top: 1rem;
+`
+
+const ErrorCard = styled.div`
+  ${props => props.theme.cards.base}
+  ${props => props.theme.cards.failure}
+
+  margin-top: 1rem;
+
+  a {
+    color: ${props => props.theme.colors.failure};
+  }
+`
+
+const SuccessCard = styled.div`
+  ${props => props.theme.cards.base}
+  ${props => props.theme.cards.success}
+
+  margin-top: 1rem;
+
+  a {
+    color: ${props => props.theme.colors.success};
   }
 `
